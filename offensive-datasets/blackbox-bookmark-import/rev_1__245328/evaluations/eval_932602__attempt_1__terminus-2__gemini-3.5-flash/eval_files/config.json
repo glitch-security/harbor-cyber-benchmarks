@@ -1,0 +1,19 @@
+{
+    "task": {
+        "path": "/tmp/eval_1030526_mz30kscn/task_245328"
+    },
+    "trial_name": "eval_932602__attempt_1",
+    "trials_dir": "/tmp/eval_1030526_mz30kscn/output",
+    "agent": {
+        "name": "terminus-2",
+        "model_name": "vertex_ai/gemini-3.5-flash",
+        "kwargs": {
+            "reasoning_effort": "medium"
+        }
+    },
+    "environment": {
+        "type": "daytona",
+        "build_args": {},
+        "override_network_mode": "public"
+    }
+}

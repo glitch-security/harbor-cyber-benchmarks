@@ -1,0 +1,47 @@
+{% extends 'django_ledger/layouts/content_layout_1.html' %}
+{% load i18n %}
+{% load static %}
+{% load django_ledger %}
+
+{% block header_buttons %}
+    <a href="{% url 'django_ledger:je-list' entity_slug=view.kwargs.entity_slug ledger_pk=view.kwargs.ledger_pk %}"
+       class="button is-dark  is-outlined">
+        <span class="icon">{% icon 'bi:arrow-left' 16 %}</span>
+        <span>{% trans 'Ledger Detail' %}</span>
+    </a>
+    <a class="button is-primary  is-outlined"
+       href="{% url 'django_ledger:je-detail-txs' entity_slug=view.kwargs.entity_slug ledger_pk=view.kwargs.ledger_pk je_pk=journal_entry.uuid %}">
+        <span class="icon">{% icon 'bi:list-check' 16 %}</span>
+        <span>{% trans 'Edit TXS' %}</span>
+    </a>
+    {% if journal_entry.can_unlock %}
+        <a class="button is-warning  is-outlined"
+           href="{% url 'django_ledger:je-mark-as-unlocked' entity_slug=view.kwargs.entity_slug ledger_pk=view.kwargs.ledger_pk je_pk=journal_entry.uuid %}">
+            <span class="icon">{% icon 'bi:unlock-fill' 16 %}</span>
+            <span>{% trans 'Unlock' %}</span>
+        </a>
+    {% endif %}
+    <a class="button is-info  is-outlined"
+       href="{% url 'django_ledger:je-update' entity_slug=view.kwargs.entity_slug ledger_pk=view.kwargs.ledger_pk je_pk=journal_entry.uuid %}">
+        <span class="icon">{% icon 'bi:pencil' 16 %}</span>
+        <span>{% trans 'Update' %}</span>
+    </a>
+{% endblock %}
+
+{% block view_content %}
+    <div class="columns is-centered is-multiline">
+        <div class="column is-12">
+            {% include 'django_ledger/journal_entry/includes/card_journal_entry.html' with journal_entry=journal_entry %}
+        </div>
+        <div class="column is-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-title">{% trans 'Journal Entry Transactions' %}</div>
+                </div>
+                <div class="card-content">
+                    {% transactions_table journal_entry %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

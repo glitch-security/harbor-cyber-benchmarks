@@ -1,0 +1,30 @@
+{% extends 'django_ledger/layouts/content_layout_1.html' %}
+{% load django_ledger %}
+{% load i18n %}
+{% load static %}
+
+{% block header_buttons %}
+    <a href="{{ journal_entry.get_absolute_url }}"
+       class="button is-dark  is-outlined">
+        <span class="icon">{% icon 'bi:arrow-left' 16 %}</span>
+        <span>{% trans 'Back to Detail' %}</span>
+    </a>
+{% endblock %}
+
+{% block view_content %}
+    <div class="columns is-centered">
+        <div class="column is-6">
+            <div class="box">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <hr>
+                    <button class="button is-fullwidth is-primary" type="submit">
+                        <span class="icon">{% icon 'bi:save' 16 %}</span>
+                        <span>{% trans 'Update Journal Entry' %}</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

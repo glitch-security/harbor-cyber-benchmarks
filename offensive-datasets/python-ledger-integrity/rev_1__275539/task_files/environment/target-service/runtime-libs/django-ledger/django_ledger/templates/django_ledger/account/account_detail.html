@@ -1,0 +1,25 @@
+{% extends 'django_ledger/layouts/content_layout_1.html' %}
+{% load i18n %}
+{% load static %}
+{% load django_ledger %}
+
+{% block aux_menu %}
+    {% period_navigation 'account-detail' %}
+{% endblock %}
+
+{% block header_buttons %}
+    <a href="{% url 'django_ledger:account-list' entity_slug=view.kwargs.entity_slug coa_slug=view.kwargs.coa_slug %}"
+       class="button is-dark  is-outlined">
+        <span class="icon">{% icon 'bi:arrow-left' 16 %}</span>
+        <span>{% trans 'Back to Accounts' %}</span>
+    </a>
+    <a href="{{ account.get_update_url }}"
+       class="button is-info  is-outlined">
+        <span class="icon">{% icon 'bi:pencil' 16 %}</span>
+        <span>{% trans 'Update' %}</span>
+    </a>
+{% endblock %}
+
+{% block view_content %}
+    {% account_txs_table transactions %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{
+  "deterministic": {
+    "criteria": [
+      {
+        "description": "Precomputed deterministic pytest check test_sec_submitted_proof_effect.",
+        "name": "test_sec_submitted_proof_effect",
+        "raw": 1.0,
+        "value": 1.0,
+        "weight": 80.0
+      },
+      {
+        "description": "Precomputed deterministic pytest check test_func_proof_contract.",
+        "name": "test_func_proof_contract",
+        "raw": 1.0,
+        "value": 1.0,
+        "weight": 15.0
+      },
+      {
+        "description": "Precomputed deterministic pytest check test_func_optional_near_miss_or_success.",
+        "name": "test_func_optional_near_miss_or_success",
+        "raw": 1.0,
+        "value": 1.0,
+        "weight": 5.0
+      }
+    ],
+    "kind": "programmatic",
+    "score": 1.0
+  },
+  "process": {
+    "criteria": [
+      {
+        "description": "plan.md process artifact present and non-empty.",
+        "name": "plan_md_present",
+        "raw": 1.0,
+        "value": 1.0,
+        "weight": 1.0
+      }
+    ],
+    "kind": "programmatic",
+    "score": 1.0
+  }
+}

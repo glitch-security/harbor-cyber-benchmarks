@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "steps": [
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/auth/login/",
+      "captures": [
+        {
+          "name": "csrf_token",
+          "source": "body",
+          "pattern": "name=\"csrfmiddlewaretoken\" value=\"([a-zA-Z0-9]+)\""
+        }
+      ]
+    },
+    {
+      "op": "http",
+      "method": "POST",
+      "path": "/auth/login/",
+      "headers": {
+        "Referer": "http://127.0.0.1:9090/auth/login/"
+      },
+      "form": {
+        "csrfmiddlewaretoken": "{{var:csrf_token}}",
+        "username": "operator",
+        "password": "LedgerLab987!"
+      }
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/work/",
+      "captures": [
+        {
+          "name": "company_slug",
+          "source": "body",
+          "pattern": "/entity/([a-zA-Z0-9_-]+)/dashboard/"
+        },
+        {
+          "name": "ledger_uuid",
+          "source": "body",
+          "pattern": "/journal-entry/[a-zA-Z0-9_-]+/([a-f0-9-]+)/detail/"
+        },
+        {
+          "name": "je_uuid",
+          "source": "body",
+          "pattern": "/journal-entry/[a-zA-Z0-9_-]+/[a-f0-9-]+/detail/([a-f0-9-]+)/"
+        }
+      ]
+    },
+    {
+      "op": "raw_socket",
+      "sends": [
+        {
+          "text": "GET /journal-entry/{{var:company_slug}}/{{var:ledger_uuid}}/update/{{var:je_uuid}}/mark-as-posted/ HTTP/1.1\r\nHost: 127.0.0.1\r\nCookie: sessionid={{cookie:sessionid}}\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\n",
+          "delay_ms": 0
+        }
+      ],
+      "read_timeout_ms": 1000
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/journal-entry/{{var:company_slug}}/{{var:ledger_uuid}}/list/"
+    }
+  ],
+  "diagnostic": null
+}

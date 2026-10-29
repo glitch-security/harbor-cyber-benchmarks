@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "steps": [
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/auth/login/",
+      "captures": [
+        {
+          "name": "csrf",
+          "source": "body",
+          "pattern": "name=\"csrfmiddlewaretoken\" value=\"([^\"]+)\""
+        }
+      ]
+    },
+    {
+      "op": "http",
+      "method": "POST",
+      "path": "/auth/login/",
+      "form": {
+        "username": "operator",
+        "password": "LedgerLab987!",
+        "csrfmiddlewaretoken": "{{var:csrf}}"
+      }
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/work/",
+      "captures": [
+        {
+          "name": "detail",
+          "source": "body",
+          "pattern": "href=\"(/journal-entry/[^\" ]+/detail/[^\" ]+/)\""
+        },
+        {
+          "name": "balance_sheet",
+          "source": "body",
+          "pattern": "href=\"(/financial-statement/entity/[^\" ]+/balance-sheet/)\""
+        }
+      ]
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "{{var:detail}}",
+      "captures": [
+        {
+          "name": "post",
+          "source": "body",
+          "pattern": "href=\"(/journal-entry/[^\" ]+/mark-as-posted/)\""
+        }
+      ]
+    },
+    {
+      "op": "raw_socket",
+      "sends": [
+        {
+          "text": "POST /work/ HTTP/1.1\r\nHost: 127.0.0.1:9090\r\nCookie: sessionid={{cookie:sessionid}}\r\nContent-Length: 4\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nGET {{var:post}} HTTP/1.1\r\nHost: 127.0.0.1:9090\r\nCookie: sessionid={{cookie:sessionid}}\r\nConnection: close\r\n\r\n",
+          "delay_ms": 0
+        }
+      ],
+      "read_timeout_ms": 2000
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "{{var:detail}}"
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "{{var:balance_sheet}}"
+    }
+  ],
+  "diagnostic": null
+}

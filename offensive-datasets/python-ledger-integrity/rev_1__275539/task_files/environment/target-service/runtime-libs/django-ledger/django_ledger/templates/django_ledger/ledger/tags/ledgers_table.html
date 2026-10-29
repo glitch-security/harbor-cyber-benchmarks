@@ -1,0 +1,180 @@
+{% now "Y" as current_year %}
+{% load icon from django_ledger %}
+{% load trans from i18n %}
+
+<div class="box">
+    <div class="table-container">
+        <table class="table is-fullwidth is-striped is-hoverable is-narrow django-ledger-table-bottom-margin-75">
+            <thead>
+            <tr>
+                <th>{% trans 'Ledger Name' %}</th>
+                <th class="has-text-centered">{% trans 'Journal Entries' %}</th>
+                <th class="has-text-centered">{% trans 'Reports' %}</th>
+                <th>{% trans 'Earliest JE Date' %}</th>
+                <th class="has-text-centered">{% trans 'Posted' %}</th>
+                <th class="has-text-centered">{% trans 'Locked' %}</th>
+                <th class="has-text-centered">{% trans 'Locked by Closing Entry' %}</th>
+                <th class="has-text-centered">{% trans 'Actions' %}</th>
+                <th>{% trans 'Created' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ledger_model in ledger_model_qs %}
+                <tr>
+                    <td>
+                        {% if ledger_model.has_wrapped_model %}
+                            <a class="has-text-weight-bold" href="{{ ledger_model.get_wrapped_model_url }}">
+                                {{ ledger_model.get_wrapped_model_instance }}
+                            </a>
+                        {% else %}
+                            <span class="has-text-weight-bold">{{ ledger_model.name }}</span>
+                        {% endif %}
+                    </td>
+                    <td class="has-text-centered">
+                        <a class="button is-primary is-small is-rounded"
+                           href="{{ ledger_model.get_journal_entry_list_url }}">
+                            <span class="icon">{% icon 'grommet-icons:transaction' 16 %}</span>
+                            <span>{{ ledger_model.journal_entries__count }}</span>
+                        </a>
+                    </td>
+                    <td class="has-text-centered">
+                        {% if ledger_model.is_posted %}
+                            <div class="dropdown is-hoverable">
+                                <div class="dropdown-trigger">
+                                    <button class="button is-info is-small is-rounded" aria-haspopup="true"
+                                            aria-controls="dropdown-menu5">
+                                        <span class="icon">{% icon 'mdi:report-pie' 16 %}</span>
+                                        <span>{% trans 'Reports' %}</span>
+                                    </button>
+                                </div>
+                                <div class="dropdown-menu" id="dropdown-menu5" role="menu">
+                                    <div class="dropdown-content">
+                                        <a class="dropdown-item" href="{{ ledger_model.get_balance_sheet_url }}">
+                                            {% trans 'Balance Sheet' %}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ ledger_model.get_income_statement_url }}">
+                                            {% trans 'Income Statement' %}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ ledger_model.get_cash_flow_statement_url }}">
+                                            {% trans 'Cash Flow Statement' %}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if ledger_model.is_posted and ledger_model.earliest_timestamp %}
+                            {{ ledger_model.earliest_timestamp | date }}
+                        {% endif %}
+                    </td>
+
+                    <td class="has-text-centered">
+                        {% if ledger_model.is_posted %}
+                            <span class="icon has-text-success">{% icon 'ant-design:check-circle-filled' 20 %}</span>
+                        {% else %}
+                            <span class="icon has-text-grey-lighter">{% icon 'ant-design:check-circle-filled' 20 %}</span>
+                        {% endif %}
+                    </td>
+                    <td class="has-text-centered">
+                        {% if ledger_model.is_locked %}
+                            <span class="icon has-text-grey" title="{% trans 'Locked' %}">
+                                {% icon 'ooui:lock' 20 %}
+                            </span>
+                        {% else %}
+                            <span class="icon has-text-grey-lighter" title="{% trans 'Unlocked' %}">
+                                {% icon 'ooui:un-lock' 20 %}
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td class="has-text-centered">
+                        {% if ledger_model.has_jes_in_locked_period %}
+                            <span class="icon has-text-grey" title="{% trans 'Locked' %}">
+                                {% icon 'ooui:lock' 20 %}
+                            </span>
+                        {% else %}
+                            <span class="icon has-text-grey-lighter" title="{% trans 'Unlocked' %}">
+                                {% icon 'ooui:un-lock' 20 %}
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td class="has-text-centered">
+                        <div class="dropdown is-right is-hoverable" id="ledger-action-{{ ledger_model.uuid }}">
+                            <div class="dropdown-trigger">
+                                <button class="button is-small is-rounded is-white"
+                                        aria-haspopup="true"
+                                        aria-controls="dropdown-menu">
+                                    <span class="icon is-small">{% icon 'bi:three-dots-vertical' 20 %}</span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu-{{ ledger_model.uuid }}" role="menu">
+                                <div class="dropdown-content">
+                                    <a href="{% url 'django_ledger:ledger-update' entity_slug=entity_slug ledger_pk=ledger_model.uuid %}"
+                                       class="dropdown-item">
+                                        <span class="icon is-small mr-2">{% icon 'bi:pencil' 16 %}</span>
+                                        {% trans 'Edit' %}
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    {% if ledger_model.can_lock %}
+                                        <a href="{% url 'django_ledger:ledger-action-lock' entity_slug=entity_slug ledger_pk=ledger_model.uuid %}?next={{ current_path }}"
+                                           class="dropdown-item has-text-info">
+                                            <span class="icon is-small mr-2">{% icon 'bi:lock-fill' 16 %}</span>
+                                            {% trans 'Lock' %}
+                                        </a>
+                                    {% endif %}
+                                    {% if ledger_model.can_unlock %}
+                                        <a href="{% url 'django_ledger:ledger-action-unlock' entity_slug=entity_slug ledger_pk=ledger_model.uuid %}?next={{ current_path }}"
+                                           class="dropdown-item has-text-warning">
+                                            <span class="icon is-small mr-2">{% icon 'bi:unlock-fill' 16 %}</span>
+                                            {% trans 'UnLock' %}
+                                        </a>
+                                    {% endif %}
+                                    {% if ledger_model.can_post %}
+                                        <a href="{% url 'django_ledger:ledger-action-post' entity_slug=entity_slug ledger_pk=ledger_model.uuid %}?next={{ current_path }}"
+                                           class="dropdown-item has-text-info">
+                                            <span class="icon is-small mr-2">{% icon 'bi:cloud-upload-fill' 16 %}</span>
+                                            {% trans 'Post' %}
+                                        </a>
+                                    {% endif %}
+                                    {% if ledger_model.can_unpost %}
+                                        <a href="{% url 'django_ledger:ledger-action-unpost' entity_slug=entity_slug ledger_pk=ledger_model.uuid %}?next={{ current_path }}"
+                                           class="dropdown-item has-text-warning">
+                                            <span class="icon is-small mr-2">{% icon 'bi:cloud-download-fill' 16 %}</span>
+                                            {% trans 'UnPost' %}
+                                        </a>
+                                    {% endif %}
+
+                                    {% if ledger_model.can_hide %}
+                                        <a href="{% url 'django_ledger:ledger-action-hide' entity_slug=entity_slug ledger_pk=ledger_model.uuid %}?next={{ current_path }}"
+                                           class="dropdown-item has-text-warning">
+                                            <span class="icon is-small mr-2">{% icon 'bi:eye-slash-fill' 16 %}</span>
+                                            {% trans 'Hide' %}
+                                        </a>
+                                    {% endif %}
+                                    {% if ledger_model.can_unhide %}
+                                        <a href="{% url 'django_ledger:ledger-action-unhide' entity_slug=entity_slug ledger_pk=ledger_model.uuid %}?next={{ current_path }}"
+                                           class="dropdown-item has-text-info">
+                                            <span class="icon is-small mr-2">{% icon 'bi:eye-fill' 16 %}</span>
+                                            {% trans 'UnHide' %}
+                                        </a>
+                                    {% endif %}
+
+                                    {% if ledger_model.can_delete %}
+                                        <hr class="dropdown-divider">
+                                        <a href="{% url 'django_ledger:ledger-delete' entity_slug=entity_slug ledger_pk=ledger_model.uuid %}?next={{ current_path }}"
+                                           class="dropdown-item has-text-danger">
+                                            <span class="icon is-small mr-2">{% icon 'bi:trash-fill' 16 %}</span>
+                                            {% trans 'Delete' %}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ ledger_model.created | date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{
+    "task": {
+        "path": "/tmp/eval_1132735_fo6bvn16/task_265459"
+    },
+    "trial_name": "eval_1029815__attempt_1",
+    "trials_dir": "/tmp/eval_1132735_fo6bvn16/output",
+    "environment": {
+        "type": "daytona",
+        "build_args": {},
+        "override_network_mode": "public"
+    },
+    "verifier": {
+        "env": {
+            "ANTHROPIC_API_KEY": "${JUDGE_ANTHROPIC_API_KEY}"
+        }
+    }
+}

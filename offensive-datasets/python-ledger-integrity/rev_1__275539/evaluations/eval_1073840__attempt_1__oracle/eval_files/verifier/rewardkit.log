@@ -1,0 +1,18 @@
+=== Deterministic pytest prepass ===
+Deterministic pytest prepass
+
+junit_xml: /logs/verifier/internal/deterministic_junit.xml
+summary: 3 passed, 0 failed, 0 skipped, score=1.0000
+
+PASSED  test_sec_submitted_proof_effect [score=1.0, weight=80.0]
+    PASSED  deterministic.pytest_checks::test_sec_submitted_proof_effect
+PASSED  test_func_proof_contract [score=1.0, weight=15.0]
+    PASSED  deterministic.pytest_checks::test_func_proof_contract
+PASSED  test_func_optional_near_miss_or_success [score=1.0, weight=5.0]
+    PASSED  deterministic.pytest_checks::test_func_optional_near_miss_or_success
+
+=== RewardKit deterministic pass ===
+deterministic: 1.0
+process: 1.0
+binary_reward: 1.0
+INFO: semantic judge skipped; requires deterministic pass + coherent provider/API key + real agent/model trajectory

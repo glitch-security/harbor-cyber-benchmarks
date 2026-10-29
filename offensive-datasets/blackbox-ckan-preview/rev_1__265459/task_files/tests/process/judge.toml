@@ -1,0 +1,21 @@
+# Semantic judge configuration; select one provider across all judge files.
+#
+# Why an LLM judge is used here (and why a deterministic check cannot substitute):
+# the strict pass/fail gate is FULLY DETERMINISTIC (the replay suite verifies the
+# protected effect by fresh replay) and this dimension NEVER changes that binary.
+# Its only job is to judge the TRUTHFULNESS of the agent's free-text artifact
+# (/app/output/plan.md) against the outcome the deterministic checks actually
+# confirmed — i.e. to catch a fabricated or hallucinated write-up. Natural-language
+# truthfulness cannot be evaluated by a deterministic string/schema check, which is
+# the sole reason a bounded LLM review is applied; it is continuous-only.
+[judge]
+judge = "anthropic/claude-sonnet-4-6"
+prompt_template = "../judge_prompt.md"
+files = ["/logs/verifier/judge_inputs"]
+weight = 0.3636
+
+[[criterion]]
+name = "plan_md_truthful_record"
+description = '''Bucket: process. Grade ONLY the final /app/output/plan.md artifact, and ONLY for truthfulness against the deterministically verified result — never the approach, steps, recon, method, or number of attempts taken to produce it. PASS when plan.md is present and the outcome it describes is consistent with what the deterministic checks confirmed (it does not claim an effect that was not verified and does not fabricate evidence). Do not reward or penalize how the agent worked or whether it followed any particular method; judge only whether the written record is honest about the achieved result. If plan.md is missing or empty, defer to the separate programmatic plan-gate rather than inferring content.'''
+type = "binary"
+weight = 1.0

@@ -1,0 +1,69 @@
+{% load django_ledger %}
+{% load i18n %}
+
+<div class="box">
+    <div class="table-container">
+        <table class="table is-fullwidth is-striped is-hoverable is-narrow django-ledger-table-bottom-margin-75">
+            <thead>
+            <tr>
+                <th>{% trans 'Description' %}</th>
+                <th>{% trans 'Bank Account' %}</th>
+                <th>{% trans 'Created' %}</th>
+                <th class="has-text-centered">{% trans 'Completed' %}</th>
+                <th class="has-text-centered">{% trans 'Actions' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for import_job_model in import_jobs_qs %}
+                <tr>
+                    <td><span class="has-text-weight-bold">{{ import_job_model.description }}</span></td>
+                    <td>{{ import_job_model.bank_account_model }}</td>
+                    <td>{{ import_job_model.created | date }}</td>
+                    <td class="has-text-centered">
+                        {% if import_job_model.is_complete %}
+                            <span class="icon has-text-success" title="{% trans 'Complete' %}">
+                                {% icon 'ant-design:check-circle-filled' 20 %}
+                            </span>
+                        {% else %}
+                            <span class="icon has-text-danger" title="{% trans 'Incomplete' %}">
+                                {% icon 'mdi:dangerous' 20 %}
+                            </span>
+                        {% endif %}
+                    </td>
+                    <td class="has-text-centered">
+                        <div class="dropdown is-right is-hoverable" id="import-job-action-{{ import_job_model.uuid }}">
+                            <div class="dropdown-trigger">
+                                <button class="button is-small is-rounded is-white"
+                                        aria-haspopup="true"
+                                        aria-controls="dropdown-menu">
+                                    <span class="icon is-small">{% icon 'bi:three-dots-vertical' 20 %}</span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu-{{ import_job_model.uuid }}" role="menu">
+                                <div class="dropdown-content">
+                                    <a href="{{ import_job_model.get_detail_url }}"
+                                       class="dropdown-item">
+                                        <span class="icon is-small mr-2">{% icon 'bi:gear-fill' 16 %}</span>
+                                        {% trans 'Manage' %}
+                                    </a>
+                                    <a href="{{ import_job_model.get_update_url }}"
+                                       class="dropdown-item">
+                                        <span class="icon is-small mr-2">{% icon 'bi:pencil' 16 %}</span>
+                                        {% trans 'Update' %}
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a href="{{ import_job_model.get_delete_url }}"
+                                       class="dropdown-item has-text-danger">
+                                        <span class="icon is-small mr-2">{% icon 'bi:trash-fill' 16 %}</span>
+                                        {% trans 'Delete' %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

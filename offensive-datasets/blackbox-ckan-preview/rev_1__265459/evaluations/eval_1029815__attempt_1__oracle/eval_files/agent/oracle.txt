@@ -1,0 +1,3 @@
+[solve] credential probe: <urlopen error [Errno 111] Connection refused>
+wrote /testbed/proof.json
+[solve] wrote /testbed/proof.json and /app/output/plan.md

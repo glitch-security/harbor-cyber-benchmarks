@@ -1,0 +1,36 @@
+{% extends 'django_ledger/layouts/content_layout_1.html' %}
+{% load i18n %}
+{% load static %}
+{% load django_ledger %}
+
+{% block header_buttons %}
+    <a href="{{ coa_model.get_create_coa_account_url }}"
+       class="button is-success  is-outlined">
+        <span class="icon">{% icon 'bi:plus-lg' 20 %}</span>
+        <span>{% trans 'Create Account' %}</span>
+    </a>
+    <a href="{{ coa_model.get_coa_list_url }}"
+       class="button is-primary  is-outlined">{% trans 'Back to CoA List' %}</a>
+{% endblock %}
+
+{% block view_content %}
+    <div class="columns">
+        <div class="column is-4">
+            <form action="" method="get">
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input class="input is-rounded" type="text" name="q" value="{{ request.GET.q }}"
+                               placeholder="{% trans 'Search Code or Name...' %}">
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-info is-rounded">
+                            <span class="icon">{% icon 'bi:search' 16 %}</span>
+                            <span>{% trans 'Search' %}</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% accounts_table accounts %}
+{% endblock %}

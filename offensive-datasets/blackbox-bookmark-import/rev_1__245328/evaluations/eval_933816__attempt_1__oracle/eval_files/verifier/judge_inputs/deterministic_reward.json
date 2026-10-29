@@ -1,0 +1,139 @@
+{
+  "by_name": {
+    "test_func_proof_schema": {
+      "cases": [
+        {
+          "base_name": "test_func_proof_schema",
+          "details": "",
+          "duration": 0,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_func_proof_schema",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_func_proof_schema",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 1.0
+    },
+    "test_sec_ssrf_internal_fetch": {
+      "cases": [
+        {
+          "base_name": "test_sec_ssrf_internal_fetch",
+          "details": "",
+          "duration": 13972,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_ssrf_internal_fetch",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_ssrf_internal_fetch",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 9.0
+    }
+  },
+  "coverage_valid": true,
+  "deterministic_score": 1.0,
+  "earned_weight": 10.0,
+  "exit_code": 0,
+  "failed_checks": 0,
+  "failed_tests": [],
+  "functional": {
+    "failed": 0,
+    "passed": 1,
+    "skipped": 0
+  },
+  "grouped_penalty": 0.0,
+  "passed_checks": 2,
+  "pytest": {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "/logs/verifier/deterministic_suite/deterministic/pytest_checks.py",
+      "--junit-xml",
+      "/logs/verifier/internal/deterministic_junit.xml",
+      "-q",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "duration_ms": 14156,
+    "junit_xml": "/logs/verifier/internal/deterministic_junit.xml",
+    "raw_output": "/logs/verifier/pytest_output.log"
+  },
+  "reason": "all checks passed",
+  "root_cause_groups": {
+    "test_func_proof_schema": {
+      "members": [
+        "test_func_proof_schema"
+      ],
+      "score": 1.0,
+      "weight": 1.0
+    },
+    "test_sec_ssrf_internal_fetch": {
+      "members": [
+        "test_sec_ssrf_internal_fetch"
+      ],
+      "score": 1.0,
+      "weight": 9.0
+    }
+  },
+  "security": {
+    "failed": 0,
+    "passed": 1,
+    "skipped": 0
+  },
+  "skipped_checks": 0,
+  "strict_pass": true,
+  "strict_score": 1.0,
+  "test_weights": {
+    "test_func_proof_schema": 1.0,
+    "test_sec_ssrf_internal_fetch": 9.0
+  },
+  "tests": [
+    {
+      "cases": [
+        {
+          "base_name": "test_func_proof_schema",
+          "details": "",
+          "duration": 0,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_func_proof_schema",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_func_proof_schema",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 1.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_ssrf_internal_fetch",
+          "details": "",
+          "duration": 13972,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_ssrf_internal_fetch",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_ssrf_internal_fetch",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 9.0
+    }
+  ],
+  "total_checks": 2,
+  "total_weight": 10.0,
+  "unknown_pytest_rows": []
+}

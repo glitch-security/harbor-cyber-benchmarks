@@ -1,0 +1,11 @@
+# Guard interactive root shells so any hands-on session in the sidecar lands in
+# the unprivileged service user. Defense in depth only — the real isolation is
+# the container boundary + file ownership, not this guard.
+case "$-" in
+  *i*)
+    if [ "$(id -u)" = "0" ] && [ "${SVC_KEEP_ROOT:-0}" != "1" ]; then
+      cd /testbed 2>/dev/null || true
+      exec /usr/sbin/runuser -u "${TASK_AGENT_USER:-auditor}" -- /bin/bash -i
+    fi
+    ;;
+esac

@@ -1,0 +1,42 @@
+{% load static %}
+{% load i18n %}
+{% load django_ledger %}
+
+<section class="hero is-primary is-bold is-small mb-5">
+    <div class="hero-body">
+        <div class="container is-fluid">
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        {% if header_subtitle_icon %}
+                            <span class="icon is-large mr-4">
+                                {% icon header_subtitle_icon 48 %}
+                            </span>
+                        {% endif %}
+                        <div>
+                            <h1 class="title is-2 has-text-white mb-1">
+                                {{ header_title }}
+                            </h1>
+                            {% if header_subtitle %}
+                                <h2 class="is-5 has-text-white-bis has-text-weight-light">
+                                    {{ header_subtitle }}
+                                </h2>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% if header_buttons %}
+                    <div class="level-right">
+                        <div class="level-item">
+                            <div class="buttons">
+                                {% block header_buttons %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,24 @@
+{
+    "task": {
+        "path": "/tmp/eval_1132738_jjhokrz9/task_265459"
+    },
+    "trial_name": "eval_1029818__attempt_1",
+    "trials_dir": "/tmp/eval_1132738_jjhokrz9/output",
+    "agent": {
+        "name": "terminus-2",
+        "model_name": "vertex_ai/gemini-3.5-flash",
+        "kwargs": {
+            "reasoning_effort": "medium"
+        }
+    },
+    "environment": {
+        "type": "daytona",
+        "build_args": {},
+        "override_network_mode": "public"
+    },
+    "verifier": {
+        "env": {
+            "ANTHROPIC_API_KEY": "${JUDGE_ANTHROPIC_API_KEY}"
+        }
+    }
+}

@@ -1,0 +1,57 @@
+{% extends 'django_ledger/layouts/content_layout_2.html' %}
+{% load i18n %}
+{% load django_ledger %}
+{% block nav %}
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/work/">Ledger Service</a>
+            </div>
+            <div class="navbar-menu is-active">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <form action="{% url 'django_ledger:logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button class="button is-small is-danger is-outlined" type="submit">Sign out</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{% block view_content %}
+    <div class="box">
+        <h1 class="title is-4">Operations workspace</h1>
+        {% if entity %}
+            <p class="subtitle is-6">{{ entity.name }}</p>
+            <div class="content">
+                <p>This workspace collects the day-to-day bookkeeping routes for the
+                    selected company. Use the links below to review ledgers, journal
+                    entries, invoices, bills, purchase orders, the chart of accounts,
+                    bank imports and financial reports.</p>
+            </div>
+            <div class="buttons">
+                {% for label, url in links %}
+                    <a class="button is-small is-info is-light" href="{{ url }}">{{ label }}</a>
+                {% endfor %}
+            </div>
+            {% if ledger %}
+                <h2 class="title is-5 mt-5">Settlement ledger</h2>
+                <p><a href="{{ ledger.get_journal_entry_list_url }}">Open journal entries</a></p>
+                {% if review_entry %}
+                    <div class="notification is-light">
+                        <p><strong>{{ review_entry.description }}</strong></p>
+                        <p class="is-size-7">Journal entry {{ review_entry.uuid }}</p>
+                        <p><a href="{{ review_entry.get_absolute_url }}">Open journal entry</a></p>
+                        <p><a class="review-entry" href="{{ review_entry.get_action_post_url }}">Post review</a></p>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            <div class="notification is-warning">
+                No company is assigned to this account. Contact an administrator.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

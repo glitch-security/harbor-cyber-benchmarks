@@ -1,0 +1,73 @@
+{% load django_ledger %}
+{% load trans from i18n %}
+
+<div class="box">
+    <div class="table-container">
+        <table class="table is-fullwidth is-striped is-hoverable is-narrow django-ledger-table-bottom-margin-75">
+            <thead>
+            <tr>
+                <th>{% trans 'JE Number' %}</th>
+                <th>{% trans 'Date' %}</th>
+                <th class="has-text-right">{% trans 'Credit' %}</th>
+                <th class="has-text-right">{% trans 'Debit' %}</th>
+                <th>{% trans 'Description' %}</th>
+                <th>{% trans 'Unit' %}</th>
+                <th class="has-text-centered">{% trans 'Actions' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tx in transactions %}
+                <tr>
+                    <td><span class="has-text-weight-bold">{{ tx.journal_entry.je_number }}</span></td>
+                    <td>{{ tx.journal_entry.timestamp | date }}</td>
+                    <td class="has-text-right">{% if tx.tx_type == 'credit' %}{% currency_symbol %}{{ tx.amount | currency_format }}{% endif %}</td>
+                    <td class="has-text-right">{% if tx.tx_type == 'debit' %}{% currency_symbol %}{{ tx.amount | currency_format }}{% endif %}</td>
+                    <td><span class="is-size-7">{{ tx.description | default:"" }}</span></td>
+                    <td><span class="tag is-white">{{ tx.journal_entry.entity_unit.name }}</span></td>
+                    <td class="has-text-centered">
+                        <div class="dropdown is-right is-hoverable" id="tx-action-{{ tx.uuid }}">
+                            <div class="dropdown-trigger">
+                                <button class="button is-small is-rounded is-white"
+                                        aria-haspopup="true"
+                                        aria-controls="dropdown-menu">
+                                    <span class="icon is-small">{% icon 'bi:three-dots-vertical' 20 %}</span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu-{{ tx.uuid }}" role="menu">
+                                <div class="dropdown-content">
+                                    <a href="{% url 'django_ledger:je-detail' entity_slug=entity_slug ledger_pk=tx.journal_entry.ledger.uuid je_pk=tx.journal_entry.uuid %}"
+                                       class="dropdown-item">
+                                        <span class="icon is-small mr-2">{% icon 'bi:eye' 16 %}</span>
+                                        {% trans 'View JE' %}
+                                    </a>
+                                    {% if tx.journal_entry.ledger.billmodel %}
+                                        <a href="{% url 'django_ledger:bill-detail' entity_slug=entity_slug bill_pk=tx.journal_entry.ledger.billmodel.uuid %}"
+                                           class="dropdown-item">
+                                            <span class="icon is-small mr-2">{% icon 'bi:receipt' 16 %}</span>
+                                            {% trans 'View Bill' %}
+                                        </a>
+                                    {% elif tx.journal_entry.ledger.invoicemodel %}
+                                        <a href="{% url 'django_ledger:invoice-detail' entity_slug=entity_slug invoice_pk=tx.journal_entry.ledger.invoicemodel.uuid %}"
+                                           class="dropdown-item">
+                                            <span class="icon is-small mr-2">{% icon 'bi:file-earmark-text' 16 %}</span>
+                                            {% trans 'View Invoice' %}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr class="has-text-weight-bold has-background-light">
+                <td colspan="2" class="has-text-right">{% trans 'Total' %}</td>
+                <td class="has-text-right">{% currency_symbol %}{{ total_credits | currency_format }}</td>
+                <td class="has-text-right">{% currency_symbol %}{{ total_debits | currency_format }}</td>
+                <td colspan="3"></td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

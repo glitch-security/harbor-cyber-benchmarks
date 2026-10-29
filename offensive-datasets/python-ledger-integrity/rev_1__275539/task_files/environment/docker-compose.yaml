@@ -1,0 +1,18 @@
+# Canonical HARBOR target-service-isolation Compose override (Pattern 1).
+#
+# HARBOR generates the `main` service (agent + shared verifier) and merges this
+# file on top of it. Declare ONLY the target-service override here.
+#
+# `network_mode: "service:main"` shares main's network namespace only; the
+# filesystem, PID namespace, image and container identity stay separate. The
+# public contract puts the service at 127.0.0.1:9090.
+#
+# ⛔ CYCLE RULE: `network_mode: "service:main"` already creates the implicit
+# edge target-service -> main. Do not add `main.depends_on: target-service`.
+# Readiness comes from the target HEALTHCHECK and the verifier's preflight.
+services:
+  target-service:
+    build:
+      context: ./target-service
+    network_mode: "service:main"
+    restart: "no"

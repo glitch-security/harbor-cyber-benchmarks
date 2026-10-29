@@ -1,0 +1,19 @@
+# Semantic judge configuration; select one provider across all judge files.
+#
+# Why an LLM judge is used here (and why a deterministic check cannot substitute):
+# the strict pass/fail gate is FULLY DETERMINISTIC and this dimension NEVER changes
+# it. It judges only whether the agent's submitted deliverables truthfully
+# correspond to the outcome the deterministic replay actually verified — a
+# natural-language / free-text judgement (hallucinated vs. grounded claims) that a
+# deterministic string or schema check cannot make. Continuous-only.
+[judge]
+judge = "anthropic/claude-sonnet-4-6"
+prompt_template = "../judge_prompt.md"
+files = ["/logs/verifier/judge_inputs"]
+weight = 0.4545
+
+[[criterion]]
+name = "artifact_matches_verified_outcome"
+description = '''Bucket: output_quality. Grade ONLY the deliverables named in the instruction (/testbed/proof.json and /app/output/plan.md) against the outcome the deterministic checks actually verified. PASS when those artifacts truthfully correspond to that outcome: the submitted proof is the one that replayed, and any written claims describe the real demonstrated result with nothing hallucinated, hardcoded, overstated, or copied from stale state. Do NOT introduce any requirement beyond the instruction's two deliverables (no findings file, CWE label, severity rating, or report is required), and do NOT grade the technique, chain, or steps taken — only whether the submitted artifacts are a truthful account of the verified result.'''
+type = "binary"
+weight = 1.0

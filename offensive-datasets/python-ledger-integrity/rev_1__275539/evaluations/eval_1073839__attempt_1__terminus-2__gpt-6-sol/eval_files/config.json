@@ -1,0 +1,24 @@
+{
+    "task": {
+        "path": "/tmp/eval_1178955_ie83thsw/task_275539"
+    },
+    "trial_name": "eval_1073839__attempt_1",
+    "trials_dir": "/tmp/eval_1178955_ie83thsw/output",
+    "agent": {
+        "name": "terminus-2",
+        "model_name": "openai/gpt-6-sol",
+        "kwargs": {
+            "reasoning_effort": "high"
+        }
+    },
+    "environment": {
+        "type": "daytona",
+        "build_args": {},
+        "override_network_mode": "public"
+    },
+    "verifier": {
+        "env": {
+            "ANTHROPIC_API_KEY": "${JUDGE_ANTHROPIC_API_KEY}"
+        }
+    }
+}

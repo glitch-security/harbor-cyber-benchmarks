@@ -1,0 +1,7 @@
+{
+  "origin_rules": [
+    {"when": {"path": "/assessment-artifact"}, "reply": {"status": 302, "location": "http://artifact.internal:9000/"}},
+    {"when": {}, "reply": {"body": "page"}}
+  ],
+  "bookmark_url": "http://mysite.public:8080/assessment-artifact"
+}

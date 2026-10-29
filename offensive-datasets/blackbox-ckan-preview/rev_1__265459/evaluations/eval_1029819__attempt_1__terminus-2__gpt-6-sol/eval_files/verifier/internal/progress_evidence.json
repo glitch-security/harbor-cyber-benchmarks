@@ -1,0 +1,83 @@
+{
+  "coverage_status": "ok",
+  "criteria": {
+    "test_sec_foreign_owner_record_exposed": {
+      "evidence": "not_observed",
+      "observed": false,
+      "passed": false,
+      "satisfied_by_full_effect": false
+    },
+    "test_sec_redeemable_target_authority_exposed": {
+      "evidence": "not_observed",
+      "observed": false,
+      "passed": false,
+      "satisfied_by_full_effect": false
+    }
+  },
+  "full_effect_both": false,
+  "generations": [
+    {
+      "approved_source_revision": "srcrev-2026q2-e7a1",
+      "foreign_owner_record": {
+        "authenticated": false,
+        "candidates": 0,
+        "label": null,
+        "observed": false,
+        "probe_status": 0
+      },
+      "generation": 2,
+      "index": 1,
+      "publication_etag_prefix": "pub:\"ae51ecb",
+      "replay_error": "",
+      "target_body_observed": false,
+      "usable_target_authority": {
+        "body_matches_trusted_hash": false,
+        "confirmed": false,
+        "join": {
+          "authority": false,
+          "manifest": false,
+          "ready": false
+        },
+        "join_observed": false,
+        "malformed": false,
+        "observed": false,
+        "probe_status": 0,
+        "verifier_confirmed_captured_authority": false
+      },
+      "verifier_hash_prefix": "c8895ab6cd44"
+    },
+    {
+      "approved_source_revision": "srcrev-2026q1-c33d",
+      "foreign_owner_record": {
+        "authenticated": false,
+        "candidates": 0,
+        "label": null,
+        "observed": false,
+        "probe_status": 0
+      },
+      "generation": 3,
+      "index": 2,
+      "publication_etag_prefix": "pub:\"e9b4c88",
+      "replay_error": "",
+      "target_body_observed": false,
+      "usable_target_authority": {
+        "body_matches_trusted_hash": false,
+        "confirmed": false,
+        "join": {
+          "authority": false,
+          "manifest": false,
+          "ready": false
+        },
+        "join_observed": false,
+        "malformed": false,
+        "observed": false,
+        "probe_status": 0,
+        "verifier_confirmed_captured_authority": false
+      },
+      "verifier_hash_prefix": "50bf437abd6c"
+    }
+  ],
+  "identity_checked": true,
+  "schema": 1,
+  "submission_ok": true
+}

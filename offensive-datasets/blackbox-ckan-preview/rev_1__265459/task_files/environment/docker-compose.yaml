@@ -1,0 +1,18 @@
+# Compose override for the target-service sidecar. The `main` service (agent +
+# shared verifier) is generated separately and this file is merged on top of it;
+# declare only the target-service override here.
+#
+# The task contract puts the target at 127.0.0.1:9090, so the sidecar shares
+# main's NETWORK namespace via `network_mode: "service:main"` (filesystem, mount,
+# PID, image, and container identities stay distinct). That already creates an
+# implicit target-service -> main edge, so a reverse `main.depends_on:
+# target-service` must NOT be added — it would form a startup cycle and the
+# project would fail to start. Readiness comes from the target Dockerfile
+# HEALTHCHECK (which probes the control port) and the verifier's preflight check,
+# never from a reverse dependency edge.
+services:
+  target-service:
+    build:
+      context: ./target-service
+    network_mode: "service:main"
+    restart: "no"

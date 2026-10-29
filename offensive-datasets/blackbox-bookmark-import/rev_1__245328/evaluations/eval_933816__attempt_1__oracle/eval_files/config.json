@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "/tmp/eval_1031751_cilwnm7f/task_245328"
+    },
+    "trial_name": "eval_933816__attempt_1",
+    "trials_dir": "/tmp/eval_1031751_cilwnm7f/output",
+    "environment": {
+        "type": "daytona",
+        "build_args": {},
+        "override_network_mode": "public"
+    }
+}

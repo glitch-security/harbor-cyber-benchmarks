@@ -1,0 +1,10 @@
+{
+  "binary_reward": 0.0,
+  "continuous_reward": 0.1217,
+  "deterministic": 0.1,
+  "output_quality": 0.0,
+  "process": 0.3333,
+  "reward": 0.0,
+  "task_quality": 1.0,
+  "validity": 1.0
+}

@@ -1,0 +1,7 @@
+{
+  "binary_reward": 1.0,
+  "continuous_reward": 1.0,
+  "deterministic": 1.0,
+  "process": 1.0,
+  "reward": 1.0
+}

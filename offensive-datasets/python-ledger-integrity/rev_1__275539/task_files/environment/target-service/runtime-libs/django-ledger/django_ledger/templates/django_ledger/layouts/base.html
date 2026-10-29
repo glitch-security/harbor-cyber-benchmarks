@@ -1,0 +1,126 @@
+{% load static %}
+{% load django_ledger %}
+{% load cache %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>{% block page_title %}{{ page_title }} | {{ entity_model.name | default:'' }}{% endblock %}</title>
+
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('djl-theme');
+                var theme;
+                if (saved === 'dark' || saved === 'light') {
+                    theme = saved;
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    theme = 'dark';
+                } else {
+                    theme = 'light';
+                }
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <!-- Bulma base, then Bulmaswatch theme, then our overrides -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jenil/bulmaswatch@gh-pages/{{ DJANGO_LEDGER_THEME }}/bulmaswatch.min.css">
+    <link rel="stylesheet" href="{% static 'django_ledger/css/djl_styles.css' %}">
+
+    <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'django_ledger/logo/favicon.png' %}">
+
+    {% block header_extra_js %}{% endblock %}
+    {% block header_extra_css %}{% endblock %}
+
+</head>
+
+<body>
+
+{% block nav %}
+    {% include 'django_ledger/includes/nav.html' %}
+{% endblock %}
+
+{% block header %}
+    {% include 'django_ledger/includes/page_header.html' with header_title=header_title header_subtitle=header_subtitle header_buttons=True %}
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+{% block messages %}
+    {% include 'django_ledger/includes/messages.html' with messages=messages %}
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}
+    {% include 'django_ledger/includes/footer.html' %}
+{% endblock %}
+
+{% block script_bottom %}
+    <script src="{% static 'django_ledger/bundle/djetler.bundle.js' %}"></script>
+
+    <script>
+        {% if entity_slug %}
+            let entitySlug = "{{ view.kwargs.entity_slug }}"
+        {% endif %}
+
+        {% if from_date and to_date %}
+            let fromDate = "{{ from_date | date:'Y-m-d' }}";
+            let toDate = "{{ to_date | date:'Y-m-d' }}";
+        {% endif %}
+
+        {% if date_navigation_url %}
+            let dateNavigationUrl = "{{ date_navigation_url }}"
+            let datePickers = document.querySelectorAll("[id^='djl-datepicker']")
+            datePickers.forEach(dp => djLedger.getCalendar(dp.attributes.id.value, dateNavigationUrl))
+        {% endif %}
+    </script>
+
+    <script>
+        // Theme toggle logic
+        (function () {
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                try {
+                    localStorage.setItem('djl-theme', theme);
+                } catch (e) {
+                }
+                var icon = document.getElementById('djl-theme-toggle-icon');
+                var label = document.getElementById('djl-theme-toggle-label');
+                var btn = document.getElementById('djl-theme-toggle');
+                if (btn) btn.setAttribute('aria-pressed', theme === 'dark');
+                if (icon) icon.setAttribute('icon', theme === 'dark' ? 'mdi:weather-night' : 'mdi:weather-sunny');
+                if (label) label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+            }
+
+            function initThemeToggle() {
+                var current = document.documentElement.getAttribute('data-theme') || 'light';
+                applyTheme(current);
+                var toggle = document.getElementById('djl-theme-toggle');
+                if (!toggle) return;
+                toggle.addEventListener('click', function () {
+                    var t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    applyTheme(t);
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initThemeToggle);
+            } else {
+                initThemeToggle();
+            }
+        })();
+    </script>
+{% endblock %}
+
+{% block bottom_extra_js %}{% endblock %}
+
+</body>
+</html>

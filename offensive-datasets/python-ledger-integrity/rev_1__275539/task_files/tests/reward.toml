@@ -1,0 +1,16 @@
+# Strict binary reward configuration for this task.
+# Parsed natively by the pinned harbor-rewardkit 0.2.3.
+# This file belongs ONLY in the deterministic pass suite. The deterministic
+# suite contains the task-specific `deterministic` dimension and the
+# programmatic `process` plan.md gate. Therefore:
+#
+#   binary_reward = 1.0 iff every weighted deterministic check passes AND
+#                   /app/output/plan.md exists and is non-empty.
+#
+# Do not use `all_pass`: RewardKit defines it as every dimension > 0, which
+# would let partial deterministic scores such as 0.59 count as a binary pass.
+# `threshold = 1.0` is the strict gate.
+[[reward]]
+name = "binary_reward"
+aggregation = "threshold"
+threshold = 1.0

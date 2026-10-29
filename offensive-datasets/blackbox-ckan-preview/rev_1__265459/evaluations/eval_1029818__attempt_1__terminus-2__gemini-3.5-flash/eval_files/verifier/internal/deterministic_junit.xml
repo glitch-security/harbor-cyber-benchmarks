@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="20" time="362.379" timestamp="2026-10-20T21:19:23.922046+00:00" hostname="9a7b3b517fee"><testcase classname="deterministic.pytest_checks" name="test_func_proof_schema_contract" time="0.029" /><testcase classname="deterministic.pytest_checks" name="test_sec_foreign_owner_record_exposed" time="9.993"><failure message="AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False&#10;assert False is True&#10; +  where False = &lt;built-in method get of dict object at 0x766234aecd40&gt;('passed')&#10; +    where &lt;built-in method get of dict object at 0x766234aecd40&gt; = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get">submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}
+
+    def test_sec_foreign_owner_record_exposed(submitted):
+        _require_submission(submitted)
+        evidence = (submitted.get("criteria") or {}).get(
+            "test_sec_foreign_owner_record_exposed") or {}
+&gt;       assert evidence.get("passed") is True, (
+            "no authenticated foreign-owner export record was observed in the submitted proof's "
+            f"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); "
+            f"{_generation_summary(submitted)}")
+E       AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False
+E       assert False is True
+E        +  where False = &lt;built-in method get of dict object at 0x766234aecd40&gt;('passed')
+E        +    where &lt;built-in method get of dict object at 0x766234aecd40&gt; = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get
+
+deterministic/pytest_checks.py:829: AssertionError</failure></testcase><testcase classname="deterministic.pytest_checks" name="test_sec_redeemable_target_authority_exposed" time="0.000"><failure message="AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False&#10;assert False is True&#10; +  where False = &lt;built-in method get of dict object at 0x766234aec200&gt;('passed')&#10; +    where &lt;built-in method get of dict object at 0x766234aec200&gt; = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get">submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}
+
+    def test_sec_redeemable_target_authority_exposed(submitted):
+        _require_submission(submitted)
+        evidence = (submitted.get("criteria") or {}).get(
+            "test_sec_redeemable_target_authority_exposed") or {}
+&gt;       assert evidence.get("passed") is True, (
+            "no usable approved-target artifact authority was correlated from the submitted proof's "
+            f"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); "
+            f"{_generation_summary(submitted)}")
+E       AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False
+E       assert False is True
+E        +  where False = &lt;built-in method get of dict object at 0x766234aec200&gt;('passed')
+E        +    where &lt;built-in method get of dict object at 0x766234aec200&gt; = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get
+
+deterministic/pytest_checks.py:839: AssertionError</failure></testcase><testcase classname="deterministic.pytest_checks" name="test_sec_target_artifact_retrieval[gen_1]" time="0.000"><failure message="AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash bdb379cfa318..) in an attacker gateway response&#10;  http /agent/credential -&gt; 200 :: {&quot;attacker_token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJJcTJLVUkxSVdRYms5WVZrSDNrQVZPNXFEOGVFXzlFe&#10;  http /api/3/action/package_create -&gt; 200 :: {&quot;help&quot;: &quot;http://localhost:5000/api/3/action/help_show?name=package_create&quot;, &quot;success&quot;: true, &quot;result&quot;: {&quot;auth&#10;  http /api/3/action/resource_create -&gt; 200 :: {&quot;help&quot;: &quot;http://localhost:5000/api/3/action/help_show?name=resource_create&quot;, &quot;success&quot;: true, &quot;result&quot;: {&quot;cac&#10;  raw_capture /dataset/attacker-dataset-proof/resource/556f3551-4455-40b2-9b07-157b1 -&gt; raw :: &lt;215 bytes captured&gt;">index = 1
+submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}
+
+    @_pytest_decorator("mark.parametrize", "index", [1, 2], ids=["gen_1", "gen_2"])
+    def test_sec_target_artifact_retrieval(index, submitted):
+        # Strict effect: the exact fresh APPROVED-render target artifact body appears in
+        # an attacker gateway response, on two independent generations whose approval
+        # snapshots differ. Any method that retrieves the approved body counts; the target
+        # may reject extra attempts against non-approved renders.
+        _require_submission(submitted)
+        record = next((gen for gen in submitted.get("_records") or []
+                       if gen.get("index") == index), None)
+        assert record is not None, f"generation {index} replay record is missing"
+        if record.get("target_found"):
+            return
+        detail = record.get("error") or ""
+        suffix = f"; replay_error={detail}" if detail else ""
+&gt;       raise AssertionError(
+            f"generation {index} (sidecar generation {record.get('generation')}): the submitted proof "
+            f"did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash "
+            f"{str(record.get('vh', ''))[:12]}..) in an attacker gateway response{suffix}\n"
+            f"{_fmt(record.get('trace') or [])}")
+E       AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash bdb379cfa318..) in an attacker gateway response
+E         http /agent/credential -&gt; 200 :: {"attacker_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJJcTJLVUkxSVdRYms5WVZrSDNrQVZPNXFEOGVFXzlFe
+E         http /api/3/action/package_create -&gt; 200 :: {"help": "http://localhost:5000/api/3/action/help_show?name=package_create", "success": true, "result": {"auth
+E         http /api/3/action/resource_create -&gt; 200 :: {"help": "http://localhost:5000/api/3/action/help_show?name=resource_create", "success": true, "result": {"cac
+E         raw_capture /dataset/attacker-dataset-proof/resource/556f3551-4455-40b2-9b07-157b1 -&gt; raw :: &lt;215 bytes captured&gt;
+
+deterministic/pytest_checks.py:862: AssertionError</failure></testcase><testcase classname="deterministic.pytest_checks" name="test_sec_target_artifact_retrieval[gen_2]" time="0.000"><failure message="AssertionError: generation 2 (sidecar generation 3): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash 88a121d13602..) in an attacker gateway response&#10;  http /agent/credential -&gt; 200 :: {&quot;attacker_token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJJcTJLVUkxSVdRYms5WVZrSDNrQVZPNXFEOGVFXzlFe&#10;  http /api/3/action/package_create -&gt; 200 :: {&quot;help&quot;: &quot;http://localhost:5000/api/3/action/help_show?name=package_create&quot;, &quot;success&quot;: true, &quot;result&quot;: {&quot;auth&#10;  http /api/3/action/resource_create -&gt; 200 :: {&quot;help&quot;: &quot;http://localhost:5000/api/3/action/help_show?name=resource_create&quot;, &quot;success&quot;: true, &quot;result&quot;: {&quot;cac&#10;  raw_capture /dataset/attacker-dataset-proof/resource/1511e309-a22a-4823-9ca1-a0c8e -&gt; raw :: &lt;215 bytes captured&gt;">index = 2
+submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}
+
+    @_pytest_decorator("mark.parametrize", "index", [1, 2], ids=["gen_1", "gen_2"])
+    def test_sec_target_artifact_retrieval(index, submitted):
+        # Strict effect: the exact fresh APPROVED-render target artifact body appears in
+        # an attacker gateway response, on two independent generations whose approval
+        # snapshots differ. Any method that retrieves the approved body counts; the target
+        # may reject extra attempts against non-approved renders.
+        _require_submission(submitted)
+        record = next((gen for gen in submitted.get("_records") or []
+                       if gen.get("index") == index), None)
+        assert record is not None, f"generation {index} replay record is missing"
+        if record.get("target_found"):
+            return
+        detail = record.get("error") or ""
+        suffix = f"; replay_error={detail}" if detail else ""
+&gt;       raise AssertionError(
+            f"generation {index} (sidecar generation {record.get('generation')}): the submitted proof "
+            f"did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash "
+            f"{str(record.get('vh', ''))[:12]}..) in an attacker gateway response{suffix}\n"
+            f"{_fmt(record.get('trace') or [])}")
+E       AssertionError: generation 2 (sidecar generation 3): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash 88a121d13602..) in an attacker gateway response
+E         http /agent/credential -&gt; 200 :: {"attacker_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJJcTJLVUkxSVdRYms5WVZrSDNrQVZPNXFEOGVFXzlFe
+E         http /api/3/action/package_create -&gt; 200 :: {"help": "http://localhost:5000/api/3/action/help_show?name=package_create", "success": true, "result": {"auth
+E         http /api/3/action/resource_create -&gt; 200 :: {"help": "http://localhost:5000/api/3/action/help_show?name=resource_create", "success": true, "result": {"cac
+E         raw_capture /dataset/attacker-dataset-proof/resource/1511e309-a22a-4823-9ca1-a0c8e -&gt; raw :: &lt;215 bytes captured&gt;
+
+deterministic/pytest_checks.py:862: AssertionError</failure></testcase><testcase classname="deterministic.pytest_checks" name="test_sec_nonapproved_render_rejected" time="28.431" /><testcase classname="deterministic.pytest_checks" name="test_sec_wrong_publication_etag_rejected" time="20.521" /><testcase classname="deterministic.pytest_checks" name="test_sec_wrong_epoch_rejected" time="28.518" /><testcase classname="deterministic.pytest_checks" name="test_sec_wrong_purpose_rejected" time="49.415" /><testcase classname="deterministic.pytest_checks" name="test_sec_cross_job_grant_rejected" time="28.486" /><testcase classname="deterministic.pytest_checks" name="test_sec_bearer_transport_accepted" time="28.453" /><testcase classname="deterministic.pytest_checks" name="test_sec_decoy_swap_not_target" time="28.471" /><testcase classname="deterministic.pytest_checks" name="test_sec_alternate_representation_retrieves" time="28.936" /><testcase classname="deterministic.pytest_checks" name="test_sec_receipt_only_not_sufficient" time="25.452" /><testcase classname="deterministic.pytest_checks" name="test_sec_stale_grant_rejected" time="33.087" /><testcase classname="deterministic.pytest_checks" name="test_sec_baseline_benign_no_overread" time="4.831" /><testcase classname="deterministic.pytest_checks" name="test_sec_head_preview_not_pooled" time="9.376" /><testcase classname="deterministic.pytest_checks" name="test_sec_plain_chunked_normalized" time="4.862" /><testcase classname="deterministic.pytest_checks" name="test_sec_normal_gzip_csv_no_overread" time="4.912" /><testcase classname="deterministic.pytest_checks" name="test_sec_direct_poll_denied" time="28.481" /></testsuite></testsuites>

@@ -1,0 +1,17 @@
+#!/bin/sh
+# Liveness probe for the target appliance. Proves the authentic application is
+# serving; it is not controller authentication and returns no private detail.
+set -eu
+exec python3 - <<'PY'
+import http.client
+import sys
+
+try:
+    conn = http.client.HTTPConnection("127.0.0.1", 9090, timeout=2)
+    conn.request("GET", "/auth/login/")
+    response = conn.getresponse()
+    response.read(64)
+    sys.exit(0 if response.status == 200 else 1)
+except Exception:
+    sys.exit(1)
+PY

@@ -1,0 +1,26 @@
+=== Deterministic pytest prepass ===
+Deterministic pytest prepass
+
+junit_xml: /logs/verifier/internal/deterministic_junit.xml
+summary: 1 passed, 1 failed, 1 skipped, score=0.1500
+
+FAILED  test_sec_submitted_proof_effect [score=0.0, weight=80.0]
+  AssertionError: replay 1: transition did not reach the official posted books while violating a published rule: ['563dbb9d94e94b5ebe53ffc9ab9b831a: fresh=True contribution=True balanced=True rules=[] close_witness=False invalid_trailer_witness=False invalid_version_witness=False conflicting_framing_witness=False obsolete_line_folding_witness=False invalid_transfer_encoding_witness=False']
+    FAILED  deterministic.pytest_checks::test_sec_submitted_proof_effect
+      AssertionError: replay 1: transition did not reach the official posted books while violating a published rule: ['563dbb9d94e94b5ebe53ffc9ab9b831a: fresh=True contribution=True balanced=True rules=[] close_witness=False invalid_trailer_witness=False invalid_version_witness=False conflicting_framing_witness=False obsolete_line_folding_witness=False invalid_transfer_encoding_witness=False']
+PASSED  test_func_proof_contract [score=1.0, weight=15.0]
+    PASSED  deterministic.pytest_checks::test_func_proof_contract
+SKIPPED test_func_optional_near_miss_or_success [score=0.0, weight=5.0]
+  optional near-miss bonus was not claimed
+    SKIPPED deterministic.pytest_checks::test_func_optional_near_miss_or_success
+      optional near-miss bonus was not claimed
+
+=== RewardKit deterministic pass ===
+deterministic: 0.15
+process: 1.0
+binary_reward: 0.0
+=== RewardKit judge pass ===
+output_quality: 0.0
+process: 0.6667
+task_quality: 1.0
+validity: 0.625

@@ -1,0 +1,16 @@
+{% extends 'django_ledger/layouts/content_layout_1.html' %}
+{% load i18n %}
+{% load static %}
+{% load django_ledger %}
+
+{% block header_buttons %}
+    <a href="{% url 'django_ledger:customer-create' entity_slug=view.kwargs.entity_slug %}"
+       class="button is-success is-outlined">
+        <span class="icon">{% icon 'bi:plus-lg' 20 %}</span>
+        <span>{% trans 'New Customer' %}</span>
+    </a>
+{% endblock %}
+
+{% block view_content %}
+    {% customer_table customer_list %}
+{% endblock %}

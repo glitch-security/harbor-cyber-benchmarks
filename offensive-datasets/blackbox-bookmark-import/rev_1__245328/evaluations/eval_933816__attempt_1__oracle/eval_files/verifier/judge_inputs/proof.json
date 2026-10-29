@@ -1,0 +1,11 @@
+{
+  "origin_rules": [
+    {"when": {"path": "/entry"},
+     "reply": {"status": 302, "location": "/probe/{unique}"}},
+    {"when": {"path": "/probe/", "visit": "new"},
+     "reply": {"body": "clip"}},
+    {"when": {"path": "/probe/", "visit": "repeat"},
+     "reply": {"status": 302, "location": "http://artifact.internal:9000/doc"}}
+  ],
+  "bookmark_url": "http://mysite.public:8080/entry"
+}

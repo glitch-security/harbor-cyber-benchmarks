@@ -1,0 +1,915 @@
+{
+  "by_name": {
+    "test_func_proof_schema_contract": {
+      "cases": [
+        {
+          "base_name": "test_func_proof_schema_contract",
+          "details": "",
+          "duration": 39,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_func_proof_schema_contract",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_func_proof_schema_contract",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 1.0
+    },
+    "test_sec_alternate_representation_retrieves": {
+      "cases": [
+        {
+          "base_name": "test_sec_alternate_representation_retrieves",
+          "details": "",
+          "duration": 25872,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_alternate_representation_retrieves",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_alternate_representation_retrieves",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_baseline_benign_no_overread": {
+      "cases": [
+        {
+          "base_name": "test_sec_baseline_benign_no_overread",
+          "details": "",
+          "duration": 5087,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_baseline_benign_no_overread",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_baseline_benign_no_overread",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_bearer_transport_accepted": {
+      "cases": [
+        {
+          "base_name": "test_sec_bearer_transport_accepted",
+          "details": "",
+          "duration": 28791,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_bearer_transport_accepted",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_bearer_transport_accepted",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_cross_job_grant_rejected": {
+      "cases": [
+        {
+          "base_name": "test_sec_cross_job_grant_rejected",
+          "details": "",
+          "duration": 20902,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_cross_job_grant_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_cross_job_grant_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_decoy_swap_not_target": {
+      "cases": [
+        {
+          "base_name": "test_sec_decoy_swap_not_target",
+          "details": "",
+          "duration": 26040,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_decoy_swap_not_target",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_decoy_swap_not_target",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_direct_poll_denied": {
+      "cases": [
+        {
+          "base_name": "test_sec_direct_poll_denied",
+          "details": "",
+          "duration": 21211,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_direct_poll_denied",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_direct_poll_denied",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_foreign_owner_record_exposed": {
+      "cases": [
+        {
+          "base_name": "test_sec_foreign_owner_record_exposed",
+          "details": "submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    def test_sec_foreign_owner_record_exposed(submitted):\n        _require_submission(submitted)\n        evidence = (submitted.get(\"criteria\") or {}).get(\n            \"test_sec_foreign_owner_record_exposed\") or {}\n>       assert evidence.get(\"passed\") is True, (\n            \"no authenticated foreign-owner export record was observed in the submitted proof's \"\n            f\"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); \"\n            f\"{_generation_summary(submitted)}\")\nE       AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False\nE       assert False is True\nE        +  where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed')\nE        +    where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get\n\ndeterministic/pytest_checks.py:829: AssertionError",
+          "duration": 10568,
+          "message": "AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed') + where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+          "name": "deterministic.pytest_checks::test_sec_foreign_owner_record_exposed",
+          "status": "failed"
+        }
+      ],
+      "details": "submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    def test_sec_foreign_owner_record_exposed(submitted):\n        _require_submission(submitted)\n        evidence = (submitted.get(\"criteria\") or {}).get(\n            \"test_sec_foreign_owner_record_exposed\") or {}\n>       assert evidence.get(\"passed\") is True, (\n            \"no authenticated foreign-owner export record was observed in the submitted proof's \"\n            f\"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); \"\n            f\"{_generation_summary(submitted)}\")\nE       AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False\nE       assert False is True\nE        +  where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed')\nE        +    where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get\n\ndeterministic/pytest_checks.py:829: AssertionError",
+      "message": "AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed') + where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+      "name": "test_sec_foreign_owner_record_exposed",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 4.0
+    },
+    "test_sec_head_preview_not_pooled": {
+      "cases": [
+        {
+          "base_name": "test_sec_head_preview_not_pooled",
+          "details": "",
+          "duration": 9600,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_head_preview_not_pooled",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_head_preview_not_pooled",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_nonapproved_render_rejected": {
+      "cases": [
+        {
+          "base_name": "test_sec_nonapproved_render_rejected",
+          "details": "",
+          "duration": 29436,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_nonapproved_render_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_nonapproved_render_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_normal_gzip_csv_no_overread": {
+      "cases": [
+        {
+          "base_name": "test_sec_normal_gzip_csv_no_overread",
+          "details": "",
+          "duration": 5660,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_normal_gzip_csv_no_overread",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_normal_gzip_csv_no_overread",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_plain_chunked_normalized": {
+      "cases": [
+        {
+          "base_name": "test_sec_plain_chunked_normalized",
+          "details": "",
+          "duration": 5212,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_plain_chunked_normalized",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_plain_chunked_normalized",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_receipt_only_not_sufficient": {
+      "cases": [
+        {
+          "base_name": "test_sec_receipt_only_not_sufficient",
+          "details": "",
+          "duration": 28835,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_receipt_only_not_sufficient",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_receipt_only_not_sufficient",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_redeemable_target_authority_exposed": {
+      "cases": [
+        {
+          "base_name": "test_sec_redeemable_target_authority_exposed",
+          "details": "submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    def test_sec_redeemable_target_authority_exposed(submitted):\n        _require_submission(submitted)\n        evidence = (submitted.get(\"criteria\") or {}).get(\n            \"test_sec_redeemable_target_authority_exposed\") or {}\n>       assert evidence.get(\"passed\") is True, (\n            \"no usable approved-target artifact authority was correlated from the submitted proof's \"\n            f\"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); \"\n            f\"{_generation_summary(submitted)}\")\nE       AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False\nE       assert False is True\nE        +  where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed')\nE        +    where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get\n\ndeterministic/pytest_checks.py:839: AssertionError",
+          "duration": 1,
+          "message": "AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed') + where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+          "name": "deterministic.pytest_checks::test_sec_redeemable_target_authority_exposed",
+          "status": "failed"
+        }
+      ],
+      "details": "submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    def test_sec_redeemable_target_authority_exposed(submitted):\n        _require_submission(submitted)\n        evidence = (submitted.get(\"criteria\") or {}).get(\n            \"test_sec_redeemable_target_authority_exposed\") or {}\n>       assert evidence.get(\"passed\") is True, (\n            \"no usable approved-target artifact authority was correlated from the submitted proof's \"\n            f\"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); \"\n            f\"{_generation_summary(submitted)}\")\nE       AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False\nE       assert False is True\nE        +  where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed')\nE        +    where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get\n\ndeterministic/pytest_checks.py:839: AssertionError",
+      "message": "AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed') + where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+      "name": "test_sec_redeemable_target_authority_exposed",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 5.0
+    },
+    "test_sec_stale_grant_rejected": {
+      "cases": [
+        {
+          "base_name": "test_sec_stale_grant_rejected",
+          "details": "",
+          "duration": 26399,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_stale_grant_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_stale_grant_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_target_artifact_retrieval": {
+      "cases": [
+        {
+          "base_name": "test_sec_target_artifact_retrieval",
+          "details": "index = 1\nsubmitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    @_pytest_decorator(\"mark.parametrize\", \"index\", [1, 2], ids=[\"gen_1\", \"gen_2\"])\n    def test_sec_target_artifact_retrieval(index, submitted):\n        # Strict effect: the exact fresh APPROVED-render target artifact body appears in\n        # an attacker gateway response, on two independent generations whose approval\n        # snapshots differ. Any method that retrieves the approved body counts; the target\n        # may reject extra attempts against non-approved renders.\n        _require_submission(submitted)\n        record = next((gen for gen in submitted.get(\"_records\") or []\n                       if gen.get(\"index\") == index), None)\n        assert record is not None, f\"generation {index} replay record is missing\"\n        if record.get(\"target_found\"):\n            return\n        detail = record.get(\"error\") or \"\"\n        suffix = f\"; replay_error={detail}\" if detail else \"\"\n>       raise AssertionError(\n            f\"generation {index} (sidecar generation {record.get('generation')}): the submitted proof \"\n            f\"did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash \"\n            f\"{str(record.get('vh', ''))[:12]}..) in an attacker gateway response{suffix}\\n\"\n            f\"{_fmt(record.get('trace') or [])}\")\nE       AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response\nE         http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth\nE         raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured>\nE         raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>\n\ndeterministic/pytest_checks.py:862: AssertionError",
+          "duration": 0,
+          "message": "AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured> raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>",
+          "name": "deterministic.pytest_checks::test_sec_target_artifact_retrieval[gen_1]",
+          "status": "failed"
+        },
+        {
+          "base_name": "test_sec_target_artifact_retrieval",
+          "details": "index = 2\nsubmitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    @_pytest_decorator(\"mark.parametrize\", \"index\", [1, 2], ids=[\"gen_1\", \"gen_2\"])\n    def test_sec_target_artifact_retrieval(index, submitted):\n        # Strict effect: the exact fresh APPROVED-render target artifact body appears in\n        # an attacker gateway response, on two independent generations whose approval\n        # snapshots differ. Any method that retrieves the approved body counts; the target\n        # may reject extra attempts against non-approved renders.\n        _require_submission(submitted)\n        record = next((gen for gen in submitted.get(\"_records\") or []\n                       if gen.get(\"index\") == index), None)\n        assert record is not None, f\"generation {index} replay record is missing\"\n        if record.get(\"target_found\"):\n            return\n        detail = record.get(\"error\") or \"\"\n        suffix = f\"; replay_error={detail}\" if detail else \"\"\n>       raise AssertionError(\n            f\"generation {index} (sidecar generation {record.get('generation')}): the submitted proof \"\n            f\"did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash \"\n            f\"{str(record.get('vh', ''))[:12]}..) in an attacker gateway response{suffix}\\n\"\n            f\"{_fmt(record.get('trace') or [])}\")\nE       AssertionError: generation 2 (sidecar generation 3): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash 50bf437abd6c..) in an attacker gateway response\nE         http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth\nE         raw_capture /dataset/attacker-gzip-preview-replay/resource/1b985c4c-eeb5-4c4e-8ac6 -> raw :: <223 bytes captured>\nE         raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>\n\ndeterministic/pytest_checks.py:862: AssertionError",
+          "duration": 0,
+          "message": "AssertionError: generation 2 (sidecar generation 3): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash 50bf437abd6c..) in an attacker gateway response http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth raw_capture /dataset/attacker-gzip-preview-replay/resource/1b985c4c-eeb5-4c4e-8ac6 -> raw :: <223 bytes captured> raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>",
+          "name": "deterministic.pytest_checks::test_sec_target_artifact_retrieval[gen_2]",
+          "status": "failed"
+        }
+      ],
+      "details": "index = 1\nsubmitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    @_pytest_decorator(\"mark.parametrize\", \"index\", [1, 2], ids=[\"gen_1\", \"gen_2\"])\n    def test_sec_target_artifact_retrieval(index, submitted):\n        # Strict effect: the exact fresh APPROVED-render target artifact body appears in\n        # an attacker gateway response, on two independent generations whose approval\n        # snapshots differ. Any method that retrieves the approved body counts; the target\n        # may reject extra attempts against non-approved renders.\n        _require_submission(submitted)\n        record = next((gen for gen in submitted.get(\"_records\") or []\n                       if gen.get(\"index\") == index), None)\n        assert record is not None, f\"generation {index} replay record is missing\"\n        if record.get(\"target_found\"):\n            return\n        detail = record.get(\"error\") or \"\"\n        suffix = f\"; replay_error={detail}\" if detail else \"\"\n>       raise AssertionError(\n            f\"generation {index} (sidecar generation {record.get('generation')}): the submitted proof \"\n            f\"did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash \"\n            f\"{str(record.get('vh', ''))[:12]}..) in an attacker gateway response{suffix}\\n\"\n            f\"{_fmt(record.get('trace') or [])}\")\nE       AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response\nE         http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth\nE         raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured>\nE         raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>\n\ndeterministic/pytest_checks.py:862: AssertionError",
+      "message": "AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured> raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>",
+      "name": "test_sec_target_artifact_retrieval",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 20.0
+    },
+    "test_sec_wrong_epoch_rejected": {
+      "cases": [
+        {
+          "base_name": "test_sec_wrong_epoch_rejected",
+          "details": "",
+          "duration": 28757,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_wrong_epoch_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_wrong_epoch_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_wrong_publication_etag_rejected": {
+      "cases": [
+        {
+          "base_name": "test_sec_wrong_publication_etag_rejected",
+          "details": "",
+          "duration": 28851,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_wrong_publication_etag_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_wrong_publication_etag_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    "test_sec_wrong_purpose_rejected": {
+      "cases": [
+        {
+          "base_name": "test_sec_wrong_purpose_rejected",
+          "details": "",
+          "duration": 28903,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_wrong_purpose_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_wrong_purpose_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    }
+  },
+  "coverage_valid": true,
+  "criterion_scores": {
+    "test_func_proof_schema_contract": 1.0,
+    "test_sec_foreign_owner_record_exposed": 0.0,
+    "test_sec_redeemable_target_authority_exposed": 0.0,
+    "test_sec_target_artifact_retrieval": 0.0
+  },
+  "deterministic_score": 0.03333333333333333,
+  "earned_weight": 1.0,
+  "errored_checks": 0,
+  "exit_code": 1,
+  "failed_checks": 3,
+  "failed_tests": [
+    {
+      "message": "AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed') + where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+      "name": "test_sec_foreign_owner_record_exposed",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 4.0
+    },
+    {
+      "message": "AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed') + where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+      "name": "test_sec_redeemable_target_authority_exposed",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 5.0
+    },
+    {
+      "message": "AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured> raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>",
+      "name": "test_sec_target_artifact_retrieval",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 20.0
+    }
+  ],
+  "functional": {
+    "errored": 0,
+    "failed": 0,
+    "passed": 1,
+    "skipped": 0
+  },
+  "gates_pass": true,
+  "grouped_penalty": 29.0,
+  "passed_checks": 16,
+  "progress_evidence": {
+    "coverage_status": "ok",
+    "criteria": {
+      "test_sec_foreign_owner_record_exposed": {
+        "evidence": "not_observed",
+        "observed": false,
+        "passed": false,
+        "satisfied_by_full_effect": false
+      },
+      "test_sec_redeemable_target_authority_exposed": {
+        "evidence": "not_observed",
+        "observed": false,
+        "passed": false,
+        "satisfied_by_full_effect": false
+      }
+    },
+    "full_effect_both": false,
+    "generations": [
+      {
+        "approved_source_revision": "srcrev-2026q2-e7a1",
+        "foreign_owner_record": {
+          "authenticated": false,
+          "candidates": 0,
+          "label": null,
+          "observed": false,
+          "probe_status": 0
+        },
+        "generation": 2,
+        "index": 1,
+        "publication_etag_prefix": "pub:\"ae51ecb",
+        "replay_error": "",
+        "target_body_observed": false,
+        "usable_target_authority": {
+          "body_matches_trusted_hash": false,
+          "confirmed": false,
+          "join": {
+            "authority": false,
+            "manifest": false,
+            "ready": false
+          },
+          "join_observed": false,
+          "malformed": false,
+          "observed": false,
+          "probe_status": 0,
+          "verifier_confirmed_captured_authority": false
+        },
+        "verifier_hash_prefix": "c8895ab6cd44"
+      },
+      {
+        "approved_source_revision": "srcrev-2026q1-c33d",
+        "foreign_owner_record": {
+          "authenticated": false,
+          "candidates": 0,
+          "label": null,
+          "observed": false,
+          "probe_status": 0
+        },
+        "generation": 3,
+        "index": 2,
+        "publication_etag_prefix": "pub:\"e9b4c88",
+        "replay_error": "",
+        "target_body_observed": false,
+        "usable_target_authority": {
+          "body_matches_trusted_hash": false,
+          "confirmed": false,
+          "join": {
+            "authority": false,
+            "manifest": false,
+            "ready": false
+          },
+          "join_observed": false,
+          "malformed": false,
+          "observed": false,
+          "probe_status": 0,
+          "verifier_confirmed_captured_authority": false
+        },
+        "verifier_hash_prefix": "50bf437abd6c"
+      }
+    ],
+    "identity_checked": true,
+    "schema": 1,
+    "submission_ok": true
+  },
+  "pytest": {
+    "command": [
+      "/usr/local/bin/python3",
+      "-m",
+      "pytest",
+      "/logs/verifier/deterministic_suite/deterministic/pytest_checks.py",
+      "--junit-xml",
+      "/logs/verifier/internal/deterministic_junit.xml",
+      "-q",
+      "-p",
+      "no:cacheprovider"
+    ],
+    "duration_ms": 330663,
+    "junit_xml": "/logs/verifier/internal/deterministic_junit.xml",
+    "raw_output": "/logs/verifier/pytest_output.log"
+  },
+  "reason": "pytest check failures",
+  "required_gates": [
+    "test_sec_alternate_representation_retrieves",
+    "test_sec_baseline_benign_no_overread",
+    "test_sec_bearer_transport_accepted",
+    "test_sec_cross_job_grant_rejected",
+    "test_sec_decoy_swap_not_target",
+    "test_sec_direct_poll_denied",
+    "test_sec_head_preview_not_pooled",
+    "test_sec_nonapproved_render_rejected",
+    "test_sec_normal_gzip_csv_no_overread",
+    "test_sec_plain_chunked_normalized",
+    "test_sec_receipt_only_not_sufficient",
+    "test_sec_stale_grant_rejected",
+    "test_sec_wrong_epoch_rejected",
+    "test_sec_wrong_publication_etag_rejected",
+    "test_sec_wrong_purpose_rejected"
+  ],
+  "root_cause_groups": {
+    "test_func_proof_schema_contract": {
+      "members": [
+        "test_func_proof_schema_contract"
+      ],
+      "score": 1.0,
+      "weight": 1.0
+    },
+    "test_sec_foreign_owner_record_exposed": {
+      "members": [
+        "test_sec_foreign_owner_record_exposed"
+      ],
+      "score": 0.0,
+      "weight": 4.0
+    },
+    "test_sec_redeemable_target_authority_exposed": {
+      "members": [
+        "test_sec_redeemable_target_authority_exposed"
+      ],
+      "score": 0.0,
+      "weight": 5.0
+    },
+    "test_sec_target_artifact_retrieval": {
+      "members": [
+        "test_sec_target_artifact_retrieval"
+      ],
+      "score": 0.0,
+      "weight": 20.0
+    }
+  },
+  "security": {
+    "errored": 0,
+    "failed": 3,
+    "passed": 15,
+    "skipped": 0
+  },
+  "skipped_checks": 0,
+  "strict_pass": false,
+  "strict_score": 0.0,
+  "test_weights": {
+    "test_func_proof_schema_contract": 1.0,
+    "test_sec_foreign_owner_record_exposed": 4.0,
+    "test_sec_redeemable_target_authority_exposed": 5.0,
+    "test_sec_target_artifact_retrieval": 20.0
+  },
+  "tests": [
+    {
+      "cases": [
+        {
+          "base_name": "test_func_proof_schema_contract",
+          "details": "",
+          "duration": 39,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_func_proof_schema_contract",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_func_proof_schema_contract",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 1.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_foreign_owner_record_exposed",
+          "details": "submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    def test_sec_foreign_owner_record_exposed(submitted):\n        _require_submission(submitted)\n        evidence = (submitted.get(\"criteria\") or {}).get(\n            \"test_sec_foreign_owner_record_exposed\") or {}\n>       assert evidence.get(\"passed\") is True, (\n            \"no authenticated foreign-owner export record was observed in the submitted proof's \"\n            f\"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); \"\n            f\"{_generation_summary(submitted)}\")\nE       AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False\nE       assert False is True\nE        +  where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed')\nE        +    where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get\n\ndeterministic/pytest_checks.py:829: AssertionError",
+          "duration": 10568,
+          "message": "AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed') + where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+          "name": "deterministic.pytest_checks::test_sec_foreign_owner_record_exposed",
+          "status": "failed"
+        }
+      ],
+      "details": "submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    def test_sec_foreign_owner_record_exposed(submitted):\n        _require_submission(submitted)\n        evidence = (submitted.get(\"criteria\") or {}).get(\n            \"test_sec_foreign_owner_record_exposed\") or {}\n>       assert evidence.get(\"passed\") is True, (\n            \"no authenticated foreign-owner export record was observed in the submitted proof's \"\n            f\"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); \"\n            f\"{_generation_summary(submitted)}\")\nE       AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False\nE       assert False is True\nE        +  where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed')\nE        +    where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get\n\ndeterministic/pytest_checks.py:829: AssertionError",
+      "message": "AssertionError: no authenticated foreign-owner export record was observed in the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eea8a40>('passed') + where <built-in method get of dict object at 0x7ca90eea8a40> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+      "name": "test_sec_foreign_owner_record_exposed",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 4.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_redeemable_target_authority_exposed",
+          "details": "submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    def test_sec_redeemable_target_authority_exposed(submitted):\n        _require_submission(submitted)\n        evidence = (submitted.get(\"criteria\") or {}).get(\n            \"test_sec_redeemable_target_authority_exposed\") or {}\n>       assert evidence.get(\"passed\") is True, (\n            \"no usable approved-target artifact authority was correlated from the submitted proof's \"\n            f\"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); \"\n            f\"{_generation_summary(submitted)}\")\nE       AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False\nE       assert False is True\nE        +  where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed')\nE        +    where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get\n\ndeterministic/pytest_checks.py:839: AssertionError",
+          "duration": 1,
+          "message": "AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed') + where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+          "name": "deterministic.pytest_checks::test_sec_redeemable_target_authority_exposed",
+          "status": "failed"
+        }
+      ],
+      "details": "submitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    def test_sec_redeemable_target_authority_exposed(submitted):\n        _require_submission(submitted)\n        evidence = (submitted.get(\"criteria\") or {}).get(\n            \"test_sec_redeemable_target_authority_exposed\") or {}\n>       assert evidence.get(\"passed\") is True, (\n            \"no usable approved-target artifact authority was correlated from the submitted proof's \"\n            f\"own gateway responses (evidence={evidence.get('evidence', 'not_observed')}); \"\n            f\"{_generation_summary(submitted)}\")\nE       AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False\nE       assert False is True\nE        +  where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed')\nE        +    where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get\n\ndeterministic/pytest_checks.py:839: AssertionError",
+      "message": "AssertionError: no usable approved-target artifact authority was correlated from the submitted proof's own gateway responses (evidence=not_observed); gen1: sidecar=2 rev=srcrev-2026q2-e7a1 target=False foreign=False authority=False; gen2: sidecar=3 rev=srcrev-2026q1-c33d target=False foreign=False authority=False assert False is True + where False = <built-in method get of dict object at 0x7ca90eef0c00>('passed') + where <built-in method get of dict object at 0x7ca90eef0c00> = {'evidence': 'not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}.get",
+      "name": "test_sec_redeemable_target_authority_exposed",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 5.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_target_artifact_retrieval",
+          "details": "index = 1\nsubmitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    @_pytest_decorator(\"mark.parametrize\", \"index\", [1, 2], ids=[\"gen_1\", \"gen_2\"])\n    def test_sec_target_artifact_retrieval(index, submitted):\n        # Strict effect: the exact fresh APPROVED-render target artifact body appears in\n        # an attacker gateway response, on two independent generations whose approval\n        # snapshots differ. Any method that retrieves the approved body counts; the target\n        # may reject extra attempts against non-approved renders.\n        _require_submission(submitted)\n        record = next((gen for gen in submitted.get(\"_records\") or []\n                       if gen.get(\"index\") == index), None)\n        assert record is not None, f\"generation {index} replay record is missing\"\n        if record.get(\"target_found\"):\n            return\n        detail = record.get(\"error\") or \"\"\n        suffix = f\"; replay_error={detail}\" if detail else \"\"\n>       raise AssertionError(\n            f\"generation {index} (sidecar generation {record.get('generation')}): the submitted proof \"\n            f\"did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash \"\n            f\"{str(record.get('vh', ''))[:12]}..) in an attacker gateway response{suffix}\\n\"\n            f\"{_fmt(record.get('trace') or [])}\")\nE       AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response\nE         http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth\nE         raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured>\nE         raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>\n\ndeterministic/pytest_checks.py:862: AssertionError",
+          "duration": 0,
+          "message": "AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured> raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>",
+          "name": "deterministic.pytest_checks::test_sec_target_artifact_retrieval[gen_1]",
+          "status": "failed"
+        },
+        {
+          "base_name": "test_sec_target_artifact_retrieval",
+          "details": "index = 2\nsubmitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    @_pytest_decorator(\"mark.parametrize\", \"index\", [1, 2], ids=[\"gen_1\", \"gen_2\"])\n    def test_sec_target_artifact_retrieval(index, submitted):\n        # Strict effect: the exact fresh APPROVED-render target artifact body appears in\n        # an attacker gateway response, on two independent generations whose approval\n        # snapshots differ. Any method that retrieves the approved body counts; the target\n        # may reject extra attempts against non-approved renders.\n        _require_submission(submitted)\n        record = next((gen for gen in submitted.get(\"_records\") or []\n                       if gen.get(\"index\") == index), None)\n        assert record is not None, f\"generation {index} replay record is missing\"\n        if record.get(\"target_found\"):\n            return\n        detail = record.get(\"error\") or \"\"\n        suffix = f\"; replay_error={detail}\" if detail else \"\"\n>       raise AssertionError(\n            f\"generation {index} (sidecar generation {record.get('generation')}): the submitted proof \"\n            f\"did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash \"\n            f\"{str(record.get('vh', ''))[:12]}..) in an attacker gateway response{suffix}\\n\"\n            f\"{_fmt(record.get('trace') or [])}\")\nE       AssertionError: generation 2 (sidecar generation 3): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash 50bf437abd6c..) in an attacker gateway response\nE         http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth\nE         raw_capture /dataset/attacker-gzip-preview-replay/resource/1b985c4c-eeb5-4c4e-8ac6 -> raw :: <223 bytes captured>\nE         raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>\n\ndeterministic/pytest_checks.py:862: AssertionError",
+          "duration": 0,
+          "message": "AssertionError: generation 2 (sidecar generation 3): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash 50bf437abd6c..) in an attacker gateway response http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth raw_capture /dataset/attacker-gzip-preview-replay/resource/1b985c4c-eeb5-4c4e-8ac6 -> raw :: <223 bytes captured> raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>",
+          "name": "deterministic.pytest_checks::test_sec_target_artifact_retrieval[gen_2]",
+          "status": "failed"
+        }
+      ],
+      "details": "index = 1\nsubmitted = {'_records': [{'authority': {'body_matches_trusted_hash': False, 'confirmed': False, 'join': {'authority': False, 'man...not_observed', 'observed': False, 'passed': False, 'satisfied_by_full_effect': False}}, 'full_effect_both': False, ...}\n\n    @_pytest_decorator(\"mark.parametrize\", \"index\", [1, 2], ids=[\"gen_1\", \"gen_2\"])\n    def test_sec_target_artifact_retrieval(index, submitted):\n        # Strict effect: the exact fresh APPROVED-render target artifact body appears in\n        # an attacker gateway response, on two independent generations whose approval\n        # snapshots differ. Any method that retrieves the approved body counts; the target\n        # may reject extra attempts against non-approved renders.\n        _require_submission(submitted)\n        record = next((gen for gen in submitted.get(\"_records\") or []\n                       if gen.get(\"index\") == index), None)\n        assert record is not None, f\"generation {index} replay record is missing\"\n        if record.get(\"target_found\"):\n            return\n        detail = record.get(\"error\") or \"\"\n        suffix = f\"; replay_error={detail}\" if detail else \"\"\n>       raise AssertionError(\n            f\"generation {index} (sidecar generation {record.get('generation')}): the submitted proof \"\n            f\"did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash \"\n            f\"{str(record.get('vh', ''))[:12]}..) in an attacker gateway response{suffix}\\n\"\n            f\"{_fmt(record.get('trace') or [])}\")\nE       AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response\nE         http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth\nE         raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured>\nE         raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>\n\ndeterministic/pytest_checks.py:862: AssertionError",
+      "message": "AssertionError: generation 1 (sidecar generation 2): the submitted proof did not deliver the fresh APPROVED target artifact (body sha256==verifier-hash c8895ab6cd44..) in an attacker gateway response http /api/3/action/package_create -> 200 :: {\"help\": \"http://localhost:5000/api/3/action/help_show?name=package_create\", \"success\": true, \"result\": {\"auth raw_capture /dataset/attacker-gzip-preview-replay/resource/376c6149-670b-4506-8984 -> raw :: <223 bytes captured> raw_capture /api/3/action/package_search?q=quarterly-energy-disclosure-2026&rows=1 -> raw :: <3638 bytes captured>",
+      "name": "test_sec_target_artifact_retrieval",
+      "score": 0.0,
+      "status": "failed",
+      "weight": 20.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_alternate_representation_retrieves",
+          "details": "",
+          "duration": 25872,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_alternate_representation_retrieves",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_alternate_representation_retrieves",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_baseline_benign_no_overread",
+          "details": "",
+          "duration": 5087,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_baseline_benign_no_overread",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_baseline_benign_no_overread",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_bearer_transport_accepted",
+          "details": "",
+          "duration": 28791,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_bearer_transport_accepted",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_bearer_transport_accepted",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_cross_job_grant_rejected",
+          "details": "",
+          "duration": 20902,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_cross_job_grant_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_cross_job_grant_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_decoy_swap_not_target",
+          "details": "",
+          "duration": 26040,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_decoy_swap_not_target",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_decoy_swap_not_target",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_direct_poll_denied",
+          "details": "",
+          "duration": 21211,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_direct_poll_denied",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_direct_poll_denied",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_head_preview_not_pooled",
+          "details": "",
+          "duration": 9600,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_head_preview_not_pooled",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_head_preview_not_pooled",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_nonapproved_render_rejected",
+          "details": "",
+          "duration": 29436,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_nonapproved_render_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_nonapproved_render_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_normal_gzip_csv_no_overread",
+          "details": "",
+          "duration": 5660,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_normal_gzip_csv_no_overread",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_normal_gzip_csv_no_overread",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_plain_chunked_normalized",
+          "details": "",
+          "duration": 5212,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_plain_chunked_normalized",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_plain_chunked_normalized",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_receipt_only_not_sufficient",
+          "details": "",
+          "duration": 28835,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_receipt_only_not_sufficient",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_receipt_only_not_sufficient",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_stale_grant_rejected",
+          "details": "",
+          "duration": 26399,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_stale_grant_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_stale_grant_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_wrong_epoch_rejected",
+          "details": "",
+          "duration": 28757,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_wrong_epoch_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_wrong_epoch_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_wrong_publication_etag_rejected",
+          "details": "",
+          "duration": 28851,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_wrong_publication_etag_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_wrong_publication_etag_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    },
+    {
+      "cases": [
+        {
+          "base_name": "test_sec_wrong_purpose_rejected",
+          "details": "",
+          "duration": 28903,
+          "message": "",
+          "name": "deterministic.pytest_checks::test_sec_wrong_purpose_rejected",
+          "status": "passed"
+        }
+      ],
+      "details": "",
+      "message": "",
+      "name": "test_sec_wrong_purpose_rejected",
+      "score": 1.0,
+      "status": "passed",
+      "weight": 0.0
+    }
+  ],
+  "total_checks": 19,
+  "total_weight": 30.0,
+  "unknown_pytest_rows": []
+}

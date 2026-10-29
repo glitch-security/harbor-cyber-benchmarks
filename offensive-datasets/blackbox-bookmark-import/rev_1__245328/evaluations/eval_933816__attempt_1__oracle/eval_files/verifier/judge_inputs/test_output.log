@@ -1,0 +1,9 @@
+Deterministic pytest prepass
+
+junit_xml: /logs/verifier/internal/deterministic_junit.xml
+summary: 2 passed, 0 failed, 0 skipped, score=1.0000
+
+PASSED  test_func_proof_schema [score=1.0, weight=1.0]
+    PASSED  deterministic.pytest_checks::test_func_proof_schema
+PASSED  test_sec_ssrf_internal_fetch [score=1.0, weight=9.0]
+    PASSED  deterministic.pytest_checks::test_sec_ssrf_internal_fetch

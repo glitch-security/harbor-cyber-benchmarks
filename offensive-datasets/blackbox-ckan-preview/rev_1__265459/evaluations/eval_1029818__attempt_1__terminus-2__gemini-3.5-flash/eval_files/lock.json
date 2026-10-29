@@ -1,0 +1,44 @@
+{
+    "schema_version": 2,
+    "task": {
+        "name": "task_265459",
+        "type": "local",
+        "digest": "sha256:12875c880a8ce419fa8a66ee8dd71f0c9dd5bf3c97c3f7e004906ae2758479eb",
+        "path": "/tmp/eval_1132738_jjhokrz9/task_265459"
+    },
+    "install_only": false,
+    "timeout_multiplier": 1.0,
+    "agent": {
+        "name": "terminus-2",
+        "model_name": "vertex_ai/gemini-3.5-flash",
+        "skills": [],
+        "resume_trajectory": false,
+        "extra_allowed_hosts": [],
+        "kwargs": {
+            "reasoning_effort": "medium"
+        },
+        "mcp_servers": []
+    },
+    "bridge_inputs": {},
+    "skills": [],
+    "environment": {
+        "type": "daytona",
+        "force_build": false,
+        "delete": true,
+        "stream": false,
+        "cpu_enforcement_policy": "auto",
+        "memory_enforcement_policy": "auto",
+        "extra_docker_compose": [],
+        "kwargs": {},
+        "build_args": {},
+        "extra_allowed_hosts": [],
+        "override_network_mode": "public"
+    },
+    "verifier": {
+        "env": {
+            "ANTHROPIC_API_KEY": "${JUDGE_ANTHROPIC_API_KEY}"
+        },
+        "disable": false,
+        "environment_mode": "shared"
+    }
+}

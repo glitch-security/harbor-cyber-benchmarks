@@ -1,0 +1,11 @@
+{
+  "plan_md": {
+    "bytes": 5376,
+    "error": "",
+    "exists": true,
+    "lines": 48,
+    "non_empty": true,
+    "path": "/app/output/plan.md",
+    "score": 1.0
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "deterministic": {
+    "by_name": {
+      "test_func_optional_near_miss_or_success": {
+        "cases": [
+          {
+            "base_name": "test_func_optional_near_miss_or_success",
+            "details": "",
+            "duration": 0,
+            "message": "",
+            "name": "deterministic.pytest_checks::test_func_optional_near_miss_or_success",
+            "status": "passed"
+          }
+        ],
+        "details": "",
+        "message": "",
+        "name": "test_func_optional_near_miss_or_success",
+        "score": 1.0,
+        "status": "passed",
+        "weight": 5.0
+      },
+      "test_func_proof_contract": {
+        "cases": [
+          {
+            "base_name": "test_func_proof_contract",
+            "details": "",
+            "duration": 2,
+            "message": "",
+            "name": "deterministic.pytest_checks::test_func_proof_contract",
+            "status": "passed"
+          }
+        ],
+        "details": "",
+        "message": "",
+        "name": "test_func_proof_contract",
+        "score": 1.0,
+        "status": "passed",
+        "weight": 15.0
+      },
+      "test_sec_submitted_proof_effect": {
+        "cases": [
+          {
+            "base_name": "test_sec_submitted_proof_effect",
+            "details": "",
+            "duration": 33224,
+            "message": "",
+            "name": "deterministic.pytest_checks::test_sec_submitted_proof_effect",
+            "status": "passed"
+          }
+        ],
+        "details": "",
+        "message": "",
+        "name": "test_sec_submitted_proof_effect",
+        "score": 1.0,
+        "status": "passed",
+        "weight": 80.0
+      }
+    },
+    "coverage_valid": true,
+    "deterministic_score": 1.0,
+    "earned_weight": 100.0,
+    "exit_code": 0,
+    "failed_checks": 0,
+    "failed_tests": [],
+    "functional": {
+      "failed": 0,
+      "passed": 2,
+      "skipped": 0
+    },
+    "grouped_penalty": 0.0,
+    "passed_checks": 3,
+    "pytest": {
+      "command": [
+        "/usr/local/bin/python3",
+        "-m",
+        "pytest",
+        "/logs/verifier/deterministic_suite/deterministic/pytest_checks.py",
+        "--junit-xml",
+        "/logs/verifier/internal/deterministic_junit.xml",
+        "-q",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "duration_ms": 33411,
+      "junit_xml": "/logs/verifier/internal/deterministic_junit.xml",
+      "raw_output": "/logs/verifier/pytest_output.log"
+    },
+    "reason": "all checks passed",
+    "root_cause_groups": {
+      "test_func_optional_near_miss_or_success": {
+        "members": [
+          "test_func_optional_near_miss_or_success"
+        ],
+        "score": 1.0,
+        "weight": 5.0
+      },
+      "test_func_proof_contract": {
+        "members": [
+          "test_func_proof_contract"
+        ],
+        "score": 1.0,
+        "weight": 15.0
+      },
+      "test_sec_submitted_proof_effect": {
+        "members": [
+          "test_sec_submitted_proof_effect"
+        ],
+        "score": 1.0,
+        "weight": 80.0
+      }
+    },
+    "security": {
+      "failed": 0,
+      "passed": 1,
+      "skipped": 0
+    },
+    "skipped_checks": 0,
+    "strict_pass": true,
+    "strict_score": 1.0,
+    "test_weights": {
+      "test_func_optional_near_miss_or_success": 5.0,
+      "test_func_proof_contract": 15.0,
+      "test_sec_submitted_proof_effect": 80.0
+    },
+    "tests": [
+      {
+        "cases": [
+          {
+            "base_name": "test_sec_submitted_proof_effect",
+            "details": "",
+            "duration": 33224,
+            "message": "",
+            "name": "deterministic.pytest_checks::test_sec_submitted_proof_effect",
+            "status": "passed"
+          }
+        ],
+        "details": "",
+        "message": "",
+        "name": "test_sec_submitted_proof_effect",
+        "score": 1.0,
+        "status": "passed",
+        "weight": 80.0
+      },
+      {
+        "cases": [
+          {
+            "base_name": "test_func_proof_contract",
+            "details": "",
+            "duration": 2,
+            "message": "",
+            "name": "deterministic.pytest_checks::test_func_proof_contract",
+            "status": "passed"
+          }
+        ],
+        "details": "",
+        "message": "",
+        "name": "test_func_proof_contract",
+        "score": 1.0,
+        "status": "passed",
+        "weight": 15.0
+      },
+      {
+        "cases": [
+          {
+            "base_name": "test_func_optional_near_miss_or_success",
+            "details": "",
+            "duration": 0,
+            "message": "",
+            "name": "deterministic.pytest_checks::test_func_optional_near_miss_or_success",
+            "status": "passed"
+          }
+        ],
+        "details": "",
+        "message": "",
+        "name": "test_func_optional_near_miss_or_success",
+        "score": 1.0,
+        "status": "passed",
+        "weight": 5.0
+      }
+    ],
+    "total_checks": 3,
+    "total_weight": 100.0,
+    "unknown_pytest_rows": []
+  },
+  "judge": {},
+  "process_artifacts": {
+    "plan_md": {
+      "bytes": 1388,
+      "error": "",
+      "exists": true,
+      "lines": 31,
+      "non_empty": true,
+      "path": "/app/output/plan.md",
+      "score": 1.0
+    }
+  },
+  "reward": {
+    "binary_reward": 1.0,
+    "continuous_reward": 1.0,
+    "deterministic": 1.0,
+    "process": 1.0,
+    "reward": 1.0
+  },
+  "weights": {
+    "deterministic": 55,
+    "output_quality": 25,
+    "process": 20
+  }
+}

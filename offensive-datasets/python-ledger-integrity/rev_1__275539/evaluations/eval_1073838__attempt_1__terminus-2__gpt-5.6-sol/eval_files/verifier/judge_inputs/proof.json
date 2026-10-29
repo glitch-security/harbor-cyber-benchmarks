@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "steps": [
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/auth/login/",
+      "captures": [
+        {
+          "name": "csrf",
+          "source": "body",
+          "pattern": "name=\"csrfmiddlewaretoken\" value=\"([^\"]+)\""
+        }
+      ]
+    },
+    {
+      "op": "http",
+      "method": "POST",
+      "path": "/auth/login/",
+      "headers": {
+        "Referer": "http://127.0.0.1:9090/auth/login/"
+      },
+      "form": {
+        "csrfmiddlewaretoken": "{{var:csrf}}",
+        "username": "operator",
+        "password": "LedgerLab987!"
+      }
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "/work/",
+      "captures": [
+        {
+          "name": "post_path",
+          "source": "body",
+          "pattern": "href=\"(/journal-entry/[^\"]+/mark-as-posted/)\""
+        },
+        {
+          "name": "detail_path",
+          "source": "body",
+          "pattern": "href=\"(/journal-entry/[^\"]+/detail/[^\"]+/)\""
+        }
+      ]
+    },
+    {
+      "op": "raw_socket",
+      "sends": [
+        {
+          "text": "GET {{var:post_path}} HTTP/1.1\r\nHost: 127.0.0.1:9090\r\nCookie: sessionid={{cookie:sessionid}}\r\nConnection: close\r\n\r\n",
+          "delay_ms": 0
+        }
+      ],
+      "read_timeout_ms": 1000,
+      "captures": []
+    },
+    {
+      "op": "http",
+      "method": "GET",
+      "path": "{{var:detail_path}}"
+    }
+  ],
+  "diagnostic": null
+}

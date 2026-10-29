@@ -1,0 +1,12 @@
+# Main image build context: agent tooling and the public proof grammar only.
+# The target appliance, application source, private solution and tests must not
+# enter this image.
+public-source/
+target-service/
+solution/
+tests/
+private/
+*.zip
+*.pyc
+__pycache__/
+.pytest_cache/

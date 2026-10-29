@@ -1,0 +1,2 @@
+wrote /testbed/proof.json
+wrote /app/output/plan.md

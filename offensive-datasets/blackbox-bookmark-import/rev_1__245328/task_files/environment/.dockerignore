@@ -1,0 +1,17 @@
+# The MAIN build context must never pull in target-private material, tests, or
+# solution. Keeping `target-service`, `tests`, `solution`, `scripts` out of the
+# main image is a load-bearing isolation boundary (checklist E-02/E-03/E-07).
+.git
+.DS_Store
+__pycache__
+*.pyc
+*.pyo
+tests
+solution
+scripts
+target-service
+
+# task services (never part of the main agent image)
+marker
+origin
+_localtest-main.yaml

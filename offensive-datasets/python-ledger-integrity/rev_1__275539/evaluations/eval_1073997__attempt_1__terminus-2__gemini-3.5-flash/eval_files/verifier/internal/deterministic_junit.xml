@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="1" tests="3" time="37.958" timestamp="2026-10-22T08:41:40.057930+00:00" hostname="0659cd394826"><testcase classname="deterministic.pytest_checks" name="test_func_proof_contract" time="0.003" /><testcase classname="deterministic.pytest_checks" name="test_sec_submitted_proof_effect" time="37.884"><failure message="AssertionError: replay 1: transition did not reach the official posted books while violating a published rule: ['563dbb9d94e94b5ebe53ffc9ab9b831a: fresh=True contribution=True balanced=True rules=[] close_witness=False invalid_trailer_witness=False invalid_version_witness=False conflicting_framing_witness=False obsolete_line_folding_witness=False invalid_transfer_encoding_witness=False']">def test_sec_submitted_proof_effect():
+        contract_helpers.assert_policy_contract()
+        session = _session_result()
+        assert not session["failures"], "\n".join(session["failures"])
+        runs = session["runs"]
+        assert len(runs) == 2, "the proof must complete two independent fresh replays"
+        generations = {run["generation"] for run in runs}
+        fixtures = {run["fixture_uuid"] for run in runs}
+        assert len(generations) == 2, f"the two replays did not use distinct fresh generations: {generations}"
+        assert len(fixtures) == 2 and all(fixtures), f"the two replays did not use distinct fresh entries: {fixtures}"
+        for run in runs:
+            effect = run["final"]
+            assert isinstance(effect, dict), f"replay {run['ordinal']}: trusted readback was absent"
+            assert effect.get("generation") == run["generation"], (
+                f"replay {run['ordinal']}: trusted readback generation changed unexpectedly"
+            )
+            members = policy.memberships(effect)
+&gt;           _assert_protected_effect(run, members)
+
+deterministic/pytest_checks.py:213: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = {'baseline_signature': (), 'final': {'fixture_uuid': '563dbb9d-94e9-4b5e-be53-ffc9ab9b831a', 'generation': 6, 'members...signature': (('563dbb9d94e94b5ebe53ffc9ab9b831a', 1, 1),), 'fixture_uuid': '563dbb9d-94e9-4b5e-be53-ffc9ab9b831a', ...}
+members = {'8ce7801dc35442a4b0b9d17806e0f9b1': {2}, 'c77cbd7861a84036bd7b7fa5985cf126': {1}}
+
+    def _assert_protected_effect(run: dict, members: dict) -&gt; None:
+        if not run["new_transitions"]:
+            raise AssertionError(
+                f"replay {run['ordinal']}: no protected posted transition was recorded\n"
+                + proof_replay.diagnostic(run["trace"])
+            )
+        accepted = []
+        reasons = []
+        for transition in run["new_transitions"]:
+            verdict = policy.evaluate(transition, members)
+            reasons.append(
+                f"{transition.get('je_uuid')}: fresh={verdict['fresh_posted']} "
+                f"contribution={verdict['posted_book_contribution']} "
+                f"balanced={verdict['balanced_books']} rules={verdict['violations']} "
+                f"close_witness={verdict['connection_violation']} "
+                f"invalid_trailer_witness={verdict['invalid_trailer_violation']} "
+                f"invalid_version_witness={verdict['invalid_version_violation']} "
+                f"conflicting_framing_witness={verdict['conflicting_framing_violation']} "
+                f"obsolete_line_folding_witness={verdict['obsolete_line_folding_violation']} "
+                f"invalid_transfer_encoding_witness={verdict['invalid_transfer_encoding_violation']}"
+            )
+            if verdict["accepted"]:
+                accepted.append(transition)
+        if not accepted:
+&gt;           raise AssertionError(
+                f"replay {run['ordinal']}: transition did not reach the official posted books "
+                f"while violating a published rule: {reasons}"
+            )
+E           AssertionError: replay 1: transition did not reach the official posted books while violating a published rule: ['563dbb9d94e94b5ebe53ffc9ab9b831a: fresh=True contribution=True balanced=True rules=[] close_witness=False invalid_trailer_witness=False invalid_version_witness=False conflicting_framing_witness=False obsolete_line_folding_witness=False invalid_transfer_encoding_witness=False']
+
+deterministic/pytest_checks.py:168: AssertionError</failure></testcase><testcase classname="deterministic.pytest_checks" name="test_func_optional_near_miss_or_success" time="0.000"><skipped type="pytest.skip" message="optional near-miss bonus was not claimed">/usr/local/lib/python3.12/site-packages/_pytest/unittest.py:385: optional near-miss bonus was not claimed</skipped></testcase></testsuite></testsuites>
